@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://f78ilgevqww4"
+path="res://.godot/imported/test.map-c89d98b0138d473267754d075a159d58.tres"
+
+[deps]
+
+source_file="res://Quake/maps/test.map"
+dest_files=["res://.godot/imported/test.map-c89d98b0138d473267754d075a159d58.tres"]
+
+[params]
+

@@ -1,0 +1,103 @@
+[gd_scene load_steps=11 format=3 uid="uid://b0jdkgdnht7ot"]
+
+[ext_resource type="Texture2D" uid="uid://dkwgnxk5lmmsf" path="res://icon.svg" id="1_7t6va"]
+[ext_resource type="Script" path="res://Platformer/LePlayer2D/Player2d.cs" id="1_435bp"]
+[ext_resource type="PackedScene" uid="uid://dgrfjqd0ynciv" path="res://Commons/Colectables/Colector.tscn" id="2_tktaa"]
+[ext_resource type="PackedScene" uid="uid://cfry7woxdt7kg" path="res://Platformer/LePlayer2D/PlayerCamera.tscn" id="2_v5eeh"]
+[ext_resource type="PackedScene" uid="uid://chh2nol7x73pt" path="res://Commons/2D/VelocityComponent2D.tscn" id="3_soj4i"]
+[ext_resource type="PackedScene" uid="uid://c3emid13pi23w" path="res://Commons/Components/HealthComponent.tscn" id="5_64kq7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vdu20"]
+size = Vector2(37, 88)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wbyfp"]
+size = Vector2(37, 89)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_guyad"]
+size = Vector2(39, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lgy16"]
+size = Vector2(39, 89)
+
+[node name="Player2D" type="CharacterBody2D" node_paths=PackedStringArray("_healthComponent", "JumpHeightTimer", "CoyoteJumpTimer", "BufferTimer")]
+scale = Vector2(0.7, 0.7)
+collision_mask = 10
+script = ExtResource("1_435bp")
+_healthComponent = NodePath("HealthComponent")
+JumpHeightTimer = NodePath("JumpHeight")
+CoyoteJumpTimer = NodePath("CoyoteTimer")
+BufferTimer = NodePath("BufferJumpTimer")
+
+[node name="PlayerCamera" parent="." instance=ExtResource("2_v5eeh")]
+scale = Vector2(0.994576, 1)
+zoom = Vector2(0.8, 0.8)
+drag_horizontal_offset = 1.0
+drag_vertical_offset = -1.0
+drag_left_margin = 0.3
+drag_top_margin = 0.4
+drag_right_margin = 0.1
+
+[node name="Colector" parent="." instance=ExtResource("2_tktaa")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Colector"]
+position = Vector2(-0.5, -13)
+shape = SubResource("RectangleShape2D_vdu20")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-1, -12.5)
+scale = Vector2(0.3, 0.7)
+texture = ExtResource("1_7t6va")
+
+[node name="PlayerSolidColision" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -12.5)
+shape = SubResource("RectangleShape2D_wbyfp")
+debug_color = Color(1.05888e-06, 0.605034, 0.672085, 0.188235)
+
+[node name="VelocityComponent2D" parent="." instance=ExtResource("3_soj4i")]
+Speed = 600.0
+Acel = 0.15
+Friction = 0.15
+ForceJump = 1000.0
+MaxForceJump = 250.0
+GravityForce = 3500.0
+TerminalVelocity = 1800.0
+
+[node name="HealthComponent" parent="." instance=ExtResource("5_64kq7")]
+
+[node name="JumpHeight" type="Timer" parent="."]
+wait_time = 0.15
+one_shot = true
+
+[node name="PlayerFeet" type="Area2D" parent="."]
+editor_description = "Only detects if had a colision with a stompable area
+"
+collision_layer = 128
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerFeet"]
+position = Vector2(-0.5, 23)
+shape = SubResource("RectangleShape2D_guyad")
+debug_color = Color(0.903915, 0.0623825, 0.728737, 0.42)
+
+[node name="PlayerHitbox" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 1024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
+position = Vector2(-0.5, -13.5)
+shape = SubResource("RectangleShape2D_lgy16")
+debug_color = Color(0.640544, 0.524616, 3.85046e-07, 0.42)
+
+[node name="BufferJumpTimer" type="Timer" parent="."]
+wait_time = 0.08
+one_shot = true
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[connection signal="timeout" from="JumpHeight" to="." method="OnJumpHeightTimeout"]
+[connection signal="area_entered" from="PlayerFeet" to="." method="OnPlayerFeetAreaEntered"]
+[connection signal="area_entered" from="PlayerHitbox" to="." method="OnPlayerHitboxAreaEntered"]
+[connection signal="timeout" from="BufferJumpTimer" to="." method="OnBufferJumpTimerTimeout"]
+[connection signal="timeout" from="CoyoteTimer" to="." method="OnCoyoteTimerTimeout"]

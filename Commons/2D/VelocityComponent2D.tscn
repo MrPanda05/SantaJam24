@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://chh2nol7x73pt"]
+
+[ext_resource type="Script" path="res://Commons/2D/VelocityComponent2d.cs" id="1_lll4q"]
+
+[node name="VelocityComponent2D" type="Node"]
+script = ExtResource("1_lll4q")

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgrfjqd0ynciv"]
+
+[ext_resource type="Script" path="res://Commons/Colectables/Colector.cs" id="1_ixs8r"]
+
+[node name="Colector" type="Area2D"]
+collision_layer = 256
+collision_mask = 32
+script = ExtResource("1_ixs8r")
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
