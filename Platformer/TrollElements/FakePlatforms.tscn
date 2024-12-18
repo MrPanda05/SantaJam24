@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cr8pubpfno5fq"]
+
+[ext_resource type="Texture2D" uid="uid://mtte5m64jked" path="res://Art/2D/tilesetoriginals.png" id="1_0rbmu"]
+[ext_resource type="PackedScene" uid="uid://dsyih5r2pftlw" path="res://Commons/2D/NormalPlatform.tscn" id="2_n7b0i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vf7tt"]
+size = Vector2(130, 16)
+
+[node name="FakePlatforms" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(4, 4)
+texture = ExtResource("1_0rbmu")
+region_enabled = true
+region_rect = Rect2(208, 16, 32, 16)
+
+[node name="NormalPlatform" parent="." instance=ExtResource("2_n7b0i")]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NormalPlatform"]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_vf7tt")

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://cy04th50jasdu"]
+
+[node name="OneWay" type="StaticBody2D"]
+editor_description = "OneWayPlatforms body
+"
+collision_layer = 4096
+collision_mask = 5

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://dstykbtdbqmf6"]
+
+[node name="KillBox" type="Area2D"]
+collision_layer = 2048
+collision_mask = 512

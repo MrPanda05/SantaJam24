@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://4st2ompw5bvq"]
+
+[ext_resource type="PackedScene" uid="uid://fberc1pijtul" path="res://Commons/2D/BaseTrigger2d.tscn" id="1_be02y"]
+[ext_resource type="Script" path="res://Platformer/Triggers/SpawnCoinTrigger.cs" id="1_l7l3r"]
+[ext_resource type="Texture2D" uid="uid://dkwgnxk5lmmsf" path="res://icon.svg" id="2_ffhii"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8s0b3"]
+size = Vector2(36, 35)
+
+[node name="SpawnCoinTrigger" type="Node2D"]
+script = ExtResource("1_l7l3r")
+Repeatable = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.396648, 0.0218497, 0.672971, 1)
+position = Vector2(-1, 2)
+scale = Vector2(0.28125, 0.265625)
+texture = ExtResource("2_ffhii")
+
+[node name="BaseTrigger2D" parent="." instance=ExtResource("1_be02y")]
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseTrigger2D"]
+position = Vector2(-1, 1.5)
+shape = SubResource("RectangleShape2D_8s0b3")
+
+[connection signal="area_entered" from="BaseTrigger2D" to="." method="OnBaseTrigger2dAreaEntered"]

@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://dmoniai6tmji"]
+
+[ext_resource type="Script" path="res://Platformer/Killables/LandMine.cs" id="1_xco1j"]
+[ext_resource type="Texture2D" uid="uid://ttbfdxv3bfvp" path="res://Art/2D/mine1.png" id="3_0tvtw"]
+[ext_resource type="PackedScene" uid="uid://dstykbtdbqmf6" path="res://Commons/2D/KillBox.tscn" id="3_dq1m2"]
+[ext_resource type="Texture2D" uid="uid://cxjoe7fux3whg" path="res://Art/2D/mine2.png" id="4_gsweg"]
+[ext_resource type="Texture2D" uid="uid://cipg2igaqpaxm" path="res://Art/2D/mine3.png" id="5_d2r2x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t1igq"]
+size = Vector2(30, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aglcn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_0tvtw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_gsweg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_d2r2x")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="LandMine" type="Node2D"]
+script = ExtResource("1_xco1j")
+
+[node name="KillBox" parent="." instance=ExtResource("3_dq1m2")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillBox"]
+position = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_t1igq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1, -7)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_aglcn")
+autoplay = "default"
+frame_progress = 0.741065
+
+[connection signal="area_entered" from="KillBox" to="." method="OnKillBoxAreaEntered"]

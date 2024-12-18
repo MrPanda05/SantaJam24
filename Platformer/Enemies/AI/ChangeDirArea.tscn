@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://d13hpad5ntra"]
+
+[node name="ChangeDirArea" type="Area2D"]
+collision_layer = 8192
+collision_mask = 0

@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://bv134gr3yo4s1"]
+
+[ext_resource type="Script" path="res://Platformer/TrollElements/TrollFallPlatform.cs" id="1_t4u56"]
+[ext_resource type="PackedScene" uid="uid://fberc1pijtul" path="res://Commons/2D/BaseTrigger2d.tscn" id="2_uc4ka"]
+[ext_resource type="Texture2D" uid="uid://mtte5m64jked" path="res://Art/2D/tilesetoriginals.png" id="4_ow4mw"]
+[ext_resource type="PackedScene" uid="uid://bt8l2h12ohmq7" path="res://Commons/2D/NormalAnimetedPlatform.tscn" id="4_vgh0s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdbmb"]
+size = Vector2(130, 28.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jh7rv"]
+size = Vector2(128, 29)
+
+[node name="TrollFallPlatform" type="Node2D" node_paths=PackedStringArray("timer")]
+script = ExtResource("1_t4u56")
+timer = NodePath("Timer")
+_Speed = 500.0
+
+[node name="NormalAnimetedPlatform" parent="." instance=ExtResource("4_vgh0s")]
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="NormalAnimetedPlatform"]
+scale = Vector2(4, 4)
+texture = ExtResource("4_ow4mw")
+region_enabled = true
+region_rect = Rect2(176, 16, 32, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NormalAnimetedPlatform"]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_jdbmb")
+
+[node name="Trigger" parent="NormalAnimetedPlatform" instance=ExtResource("2_uc4ka")]
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NormalAnimetedPlatform/Trigger"]
+position = Vector2(0, -1.5)
+shape = SubResource("RectangleShape2D_jh7rv")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="area_entered" from="NormalAnimetedPlatform/Trigger" to="." method="OnTriggerAreaEntered"]
+[connection signal="area_exited" from="NormalAnimetedPlatform/Trigger" to="." method="OnTriggerAreaExited"]
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

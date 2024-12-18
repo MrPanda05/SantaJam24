@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfd786sjm5n3y"]
+
+[ext_resource type="Texture2D" uid="uid://mtte5m64jked" path="res://Art/2D/tilesetoriginals.png" id="1_lpsyk"]
+
+[node name="PlatformSprite" type="Sprite2D"]
+scale = Vector2(4, 4)
+texture = ExtResource("1_lpsyk")
+region_enabled = true
+region_rect = Rect2(176, 0, 64, 32)

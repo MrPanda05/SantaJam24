@@ -17,6 +17,16 @@ namespace Commons._2D
         [Export] public float TerminalVelocity { get; private set; }
         [Export] public bool ApplyGravity { get; private set; } = true;
 
+        public void SetGravityForce(float newForce)
+        {
+            GravityForce = newForce;
+        }
+
+        public void SetApplyGravity(bool newApplyGravity)
+        {
+            ApplyGravity = newApplyGravity;
+        }
+
     }
 }
 

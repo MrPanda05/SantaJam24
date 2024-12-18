@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bebwtttopv8uc"]
+
+[ext_resource type="PackedScene" uid="uid://dstykbtdbqmf6" path="res://Commons/2D/KillBox.tscn" id="1_3p0rc"]
+[ext_resource type="Texture2D" uid="uid://djt0peor8kq5i" path="res://Art/2D/spike.png" id="2_hjmr7"]
+
+[node name="Spikes" type="Node2D"]
+
+[node name="KillBox" parent="." instance=ExtResource("1_3p0rc")]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KillBox"]
+position = Vector2(-1, 1)
+polygon = PackedVector2Array(-18, 17, 1, -17, 19, 17)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2.455, 2.455)
+texture = ExtResource("2_hjmr7")
+region_rect = Rect2(-0.0955143, 0.0401306, 48.0955, 10.1078)

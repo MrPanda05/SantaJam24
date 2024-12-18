@@ -1,55 +1,150 @@
-[gd_scene load_steps=11 format=3 uid="uid://b0jdkgdnht7ot"]
+[gd_scene load_steps=29 format=3 uid="uid://b0jdkgdnht7ot"]
 
-[ext_resource type="Texture2D" uid="uid://dkwgnxk5lmmsf" path="res://icon.svg" id="1_7t6va"]
 [ext_resource type="Script" path="res://Platformer/LePlayer2D/Player2d.cs" id="1_435bp"]
 [ext_resource type="PackedScene" uid="uid://dgrfjqd0ynciv" path="res://Commons/Colectables/Colector.tscn" id="2_tktaa"]
 [ext_resource type="PackedScene" uid="uid://cfry7woxdt7kg" path="res://Platformer/LePlayer2D/PlayerCamera.tscn" id="2_v5eeh"]
 [ext_resource type="PackedScene" uid="uid://chh2nol7x73pt" path="res://Commons/2D/VelocityComponent2D.tscn" id="3_soj4i"]
+[ext_resource type="Texture2D" uid="uid://b8alqsf2r4ceg" path="res://Platformer/LePlayer2D/Sprites/playerIddle1.png" id="4_ypgvk"]
 [ext_resource type="PackedScene" uid="uid://c3emid13pi23w" path="res://Commons/Components/HealthComponent.tscn" id="5_64kq7"]
+[ext_resource type="Texture2D" uid="uid://bbelwp4rbpntr" path="res://Platformer/LePlayer2D/Sprites/playerIddle2.png" id="7_j4ky8"]
+[ext_resource type="Texture2D" uid="uid://o6aekmahnxen" path="res://Platformer/LePlayer2D/Sprites/playerIddle3.png" id="8_eqneo"]
+[ext_resource type="Texture2D" uid="uid://kjcj2fx627l6" path="res://Platformer/LePlayer2D/Sprites/playerIddle4.png" id="9_8pmtl"]
+[ext_resource type="Texture2D" uid="uid://xyabej0mddy8" path="res://Platformer/LePlayer2D/Sprites/playerIddle5.png" id="10_ytr3o"]
+[ext_resource type="Texture2D" uid="uid://be4gj4hq2qmv5" path="res://Platformer/LePlayer2D/Sprites/playerrunning1.png" id="11_65nvu"]
+[ext_resource type="Texture2D" uid="uid://d312d6pyewk0r" path="res://Platformer/LePlayer2D/Sprites/playerjump1.png" id="11_flo0g"]
+[ext_resource type="Script" path="res://Platformer/LePlayer2D/PlayerSprites.cs" id="11_jx2tv"]
+[ext_resource type="Texture2D" uid="uid://ykij4ch2bca3" path="res://Platformer/LePlayer2D/Sprites/playerrunning2.png" id="12_1h6ix"]
+[ext_resource type="Texture2D" uid="uid://c2s17gdlxgp3p" path="res://Platformer/LePlayer2D/Sprites/playerjump2.png" id="12_7mne1"]
+[ext_resource type="Texture2D" uid="uid://caba3hhencf6b" path="res://Platformer/LePlayer2D/Sprites/playerrunning3.png" id="13_2vnmh"]
+[ext_resource type="Texture2D" uid="uid://p4egyyobgote" path="res://Platformer/LePlayer2D/Sprites/playerjump3.png" id="13_nnigf"]
+[ext_resource type="Texture2D" uid="uid://dmfcfth5ue7v7" path="res://Platformer/LePlayer2D/Sprites/playerrunning4.png" id="14_3fpct"]
+[ext_resource type="Texture2D" uid="uid://ckfyedixrx60d" path="res://Platformer/LePlayer2D/Sprites/playerjump4.png" id="14_cvftu"]
+[ext_resource type="Texture2D" uid="uid://bjg8sg55lq0p2" path="res://Platformer/LePlayer2D/Sprites/playerrunning5.png" id="15_qhgic"]
+[ext_resource type="Texture2D" uid="uid://k5xc6hk7q0wi" path="res://Platformer/LePlayer2D/Sprites/playerjump5.png" id="15_tc2ur"]
+[ext_resource type="Texture2D" uid="uid://b6xvtnoxox4wr" path="res://Platformer/LePlayer2D/Sprites/playerjump6.png" id="16_akp6w"]
+[ext_resource type="Texture2D" uid="uid://falq0bdwravb" path="res://Platformer/LePlayer2D/Sprites/playerjump7.png" id="17_ki3jh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vdu20"]
-size = Vector2(37, 88)
+size = Vector2(40, 62.8571)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wbyfp"]
-size = Vector2(37, 89)
+size = Vector2(40, 77)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_guyad"]
-size = Vector2(39, 16)
+size = Vector2(42.8572, 17.1429)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lgy16"]
-size = Vector2(39, 89)
+size = Vector2(40, 78)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x13vf"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ypgvk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_j4ky8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_eqneo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_8pmtl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ytr3o")
+}],
+"loop": true,
+"name": &"Iddle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_flo0g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_7mne1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_nnigf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_cvftu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_tc2ur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_akp6w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_ki3jh")
+}],
+"loop": true,
+"name": &"Jumping",
+"speed": 18.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_65nvu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_1h6ix")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_2vnmh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_3fpct")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_qhgic")
+}],
+"loop": true,
+"name": &"Runing",
+"speed": 12.0
+}]
 
 [node name="Player2D" type="CharacterBody2D" node_paths=PackedStringArray("_healthComponent", "JumpHeightTimer", "CoyoteJumpTimer", "BufferTimer")]
+position = Vector2(0, -6)
 scale = Vector2(0.7, 0.7)
-collision_mask = 10
+collision_mask = 4106
 script = ExtResource("1_435bp")
 _healthComponent = NodePath("HealthComponent")
 JumpHeightTimer = NodePath("JumpHeight")
 CoyoteJumpTimer = NodePath("CoyoteTimer")
 BufferTimer = NodePath("BufferJumpTimer")
+metadata/_edit_group_ = true
 
 [node name="PlayerCamera" parent="." instance=ExtResource("2_v5eeh")]
+process_mode = 1
 scale = Vector2(0.994576, 1)
 zoom = Vector2(0.8, 0.8)
 drag_horizontal_offset = 1.0
-drag_vertical_offset = -1.0
+drag_vertical_offset = -0.44
 drag_left_margin = 0.3
 drag_top_margin = 0.4
 drag_right_margin = 0.1
 
 [node name="Colector" parent="." instance=ExtResource("2_tktaa")]
+editor_description = "Area that detects  IColectables colisions
+
+"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Colector"]
-position = Vector2(-0.5, -13)
+position = Vector2(-1.42857, -12.8571)
 shape = SubResource("RectangleShape2D_vdu20")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(-1, -12.5)
-scale = Vector2(0.3, 0.7)
-texture = ExtResource("1_7t6va")
+scale = Vector2(4, 4)
+texture = ExtResource("4_ypgvk")
 
 [node name="PlayerSolidColision" type="CollisionShape2D" parent="."]
-position = Vector2(-0.5, -12.5)
+editor_description = "Player colision with solid objects
+"
+position = Vector2(-1.42857, -18.5)
 shape = SubResource("RectangleShape2D_wbyfp")
 debug_color = Color(1.05888e-06, 0.605034, 0.672085, 0.188235)
 
@@ -72,19 +167,21 @@ one_shot = true
 editor_description = "Only detects if had a colision with a stompable area
 "
 collision_layer = 128
-collision_mask = 64
+collision_mask = 4160
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerFeet"]
-position = Vector2(-0.5, 23)
+position = Vector2(-1.42857, 12.8571)
+scale = Vector2(0.999999, 0.999999)
 shape = SubResource("RectangleShape2D_guyad")
 debug_color = Color(0.903915, 0.0623825, 0.728737, 0.42)
 
 [node name="PlayerHitbox" type="Area2D" parent="."]
+editor_description = "Player hitbox area, used to detect colision from things that can kill the player"
 collision_layer = 512
-collision_mask = 1024
+collision_mask = 3072
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
-position = Vector2(-0.5, -13.5)
+position = Vector2(-1.42857, -19)
 shape = SubResource("RectangleShape2D_lgy16")
 debug_color = Color(0.640544, 0.524616, 3.85046e-07, 0.42)
 
@@ -93,11 +190,20 @@ wait_time = 0.08
 one_shot = true
 
 [node name="CoyoteTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.05
 one_shot = true
+
+[node name="PlayerSprites" type="AnimatedSprite2D" parent="."]
+position = Vector2(-1, -12.5)
+scale = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_x13vf")
+animation = &"Iddle"
+script = ExtResource("11_jx2tv")
 
 [connection signal="timeout" from="JumpHeight" to="." method="OnJumpHeightTimeout"]
 [connection signal="area_entered" from="PlayerFeet" to="." method="OnPlayerFeetAreaEntered"]
+[connection signal="body_entered" from="PlayerFeet" to="." method="OnPlayerFeetBodyEntered"]
+[connection signal="body_exited" from="PlayerFeet" to="." method="OnPlayerFeetBodyExited"]
 [connection signal="area_entered" from="PlayerHitbox" to="." method="OnPlayerHitboxAreaEntered"]
 [connection signal="timeout" from="BufferJumpTimer" to="." method="OnBufferJumpTimerTimeout"]
 [connection signal="timeout" from="CoyoteTimer" to="." method="OnCoyoteTimerTimeout"]

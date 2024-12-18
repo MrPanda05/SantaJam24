@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://buybceqaip3iu"]
+[gd_scene load_steps=8 format=3 uid="uid://buybceqaip3iu"]
 
 [ext_resource type="Script" path="res://Platformer/Enemies/TestEnemy.cs" id="1_bi0ve"]
 [ext_resource type="PackedScene" uid="uid://c3emid13pi23w" path="res://Commons/Components/HealthComponent.tscn" id="1_m8o82"]
 [ext_resource type="Texture2D" uid="uid://dkwgnxk5lmmsf" path="res://icon.svg" id="1_osiqk"]
+[ext_resource type="PackedScene" uid="uid://d1oddmg01dem1" path="res://Platformer/Enemies/AI/EnemyAilr.tscn" id="2_1fmp1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4iu6"]
 size = Vector2(74, 26)
@@ -15,9 +16,14 @@ size = Vector2(74, 37)
 
 [node name="TestEnemy" type="CharacterBody2D" node_paths=PackedStringArray("HealthComp")]
 collision_layer = 4
-collision_mask = 27
+collision_mask = 4123
 script = ExtResource("1_bi0ve")
 HealthComp = NodePath("HealthComponent")
+path = NodePath("EnemyAILR")
+metadata/_edit_group_ = true
+
+[node name="EnemyAILR" parent="." instance=ExtResource("2_1fmp1")]
+_speed = -50.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_m8o82")]
 
@@ -42,11 +48,15 @@ shape = SubResource("RectangleShape2D_hk55b")
 
 [node name="EnemyHitbox" type="Area2D" parent="."]
 collision_layer = 1024
-collision_mask = 512
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
 position = Vector2(1, 0.5)
 shape = SubResource("RectangleShape2D_ltk1q")
 debug_color = Color(0.922648, 0.132988, 0.601885, 0.42)
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
+position = Vector2(1, 0.5)
+scale = Vector2(3.7, 1.85)
 
 [connection signal="area_entered" from="StompArea" to="." method="OnStompAreaAreaEntered"]

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bt8l2h12ohmq7"]
+
+[node name="NormalAnimetedPlatform" type="AnimatableBody2D"]
+collision_layer = 2
+collision_mask = 5

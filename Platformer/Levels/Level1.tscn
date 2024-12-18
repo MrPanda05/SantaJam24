@@ -1,0 +1,317 @@
+[gd_scene load_steps=15 format=4 uid="uid://b1j1plm46seq7"]
+
+[ext_resource type="Texture2D" uid="uid://mtte5m64jked" path="res://Art/2D/tilesetoriginals.png" id="1_35k7o"]
+[ext_resource type="PackedScene" uid="uid://b0jdkgdnht7ot" path="res://Platformer/LePlayer2D/Player2D.tscn" id="2_qjf8k"]
+[ext_resource type="PackedScene" uid="uid://bcdksvifm5hmd" path="res://Platformer/SpawnPoint.tscn" id="2_wc4bh"]
+[ext_resource type="PackedScene" uid="uid://n5kvnw5fna0" path="res://Platformer/OneWaysPlatforms.tscn" id="3_uxddl"]
+[ext_resource type="PackedScene" uid="uid://bebwtttopv8uc" path="res://Platformer/Killables/Spikes.tscn" id="4_sqwt6"]
+[ext_resource type="PackedScene" uid="uid://dstykbtdbqmf6" path="res://Commons/2D/KillBox.tscn" id="5_j3bwq"]
+[ext_resource type="PackedScene" uid="uid://bv134gr3yo4s1" path="res://Platformer/TrollElements/TrollFallPlatform.tscn" id="6_2607c"]
+[ext_resource type="PackedScene" uid="uid://dmoniai6tmji" path="res://Platformer/Killables/LandMine.tscn" id="7_t7am6"]
+[ext_resource type="PackedScene" uid="uid://cr8pubpfno5fq" path="res://Platformer/TrollElements/FakePlatforms.tscn" id="9_8sh4n"]
+[ext_resource type="PackedScene" uid="uid://1dsvrgva1irb" path="res://Platformer/TrollElements/TrollPlatform.tscn" id="9_xahrq"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uf2ka"]
+texture = ExtResource("1_35k7o")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:2/0 = 0
+6:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+8:0/0 = 0
+8:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:0/0 = 0
+9:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+9:1/0 = 0
+9:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+11:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+14:1/0 = 0
+13:1/0 = 0
+12:1/0 = 0
+11:1/0 = 0
+4:4/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_vicok"]
+physics_layer_0/collision_layer = 2
+physics_layer_0/collision_mask = 5
+sources/2 = SubResource("TileSetAtlasSource_uf2ka")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n4gh1"]
+size = Vector2(31, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_451vt"]
+size = Vector2(7797, 520)
+
+[node name="Level1" type="Node2D"]
+
+[node name="Player2D" parent="." instance=ExtResource("2_qjf8k")]
+position = Vector2(-298, -43)
+
+[node name="TilesMaps" type="Node2D" parent="."]
+
+[node name="Solid Layer" type="TileMapLayer" parent="TilesMaps"]
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAAAAAsAAgABAAAAAAABAAsAAgABAAAAAAACAAsAAgABAAAAAAADAAsAAgABAAAAAAAEAAsAAgABAAAAAAAFAAsAAgABAAAAAAAGAAsAAgABAAAAAAAHAAsAAgABAAAAAAAIAAsAAgABAAAAAAAJAAsAAgABAAAAAAAKAAsAAgABAAAAAAALAAsAAgABAAAAAAAMAAsAAgABAAAAAAANAAsAAgABAAAAAAAOAAsAAgABAAAAAAAPAAsAAgABAAAAAAAQAAsAAgABAAAAAAARAAsAAgABAAAAAAASAAsAAgABAAAAAAATAAsAAgACAAAAAAD//wsAAgAAAAAAAAD//wwAAgAAAAEAAAATAAwAAgACAAEAAAATAA0AAgACAAEAAAATAA4AAgACAAEAAAATAA8AAgACAAEAAAATABAAAgACAAEAAAATABEAAgACAAEAAAATABIAAgACAAIAAAASABIAAgABAAIAAAARABIAAgABAAIAAAAQABIAAgABAAIAAAAPABIAAgABAAIAAAAOABIAAgABAAIAAAANABIAAgABAAIAAAAMABIAAgABAAIAAAALABIAAgABAAIAAAAKABIAAgABAAIAAAAJABIAAgABAAIAAAAIABIAAgABAAIAAAAHABIAAgABAAIAAAAGABIAAgABAAIAAAAFABIAAgABAAIAAAAEABIAAgABAAIAAAADABIAAgABAAIAAAACABIAAgABAAIAAAABABIAAgABAAIAAAAAABIAAgABAAIAAAD//xIAAgAAAAIAAAD//w0AAgAAAAEAAAD//w4AAgAAAAEAAAD//w8AAgAAAAEAAAD//xAAAgAAAAEAAAD//xEAAgAAAAEAAAAAAAwAAgABAAEAAAAAAA0AAgABAAEAAAAAAA4AAgABAAEAAAAAAA8AAgABAAEAAAAAABAAAgABAAEAAAAAABEAAgABAAEAAAABAAwAAgABAAEAAAABAA0AAgABAAEAAAABAA4AAgABAAEAAAABAA8AAgABAAEAAAABABAAAgABAAEAAAABABEAAgABAAEAAAACAAwAAgABAAEAAAACAA0AAgABAAEAAAACAA4AAgABAAEAAAACAA8AAgABAAEAAAACABAAAgABAAEAAAACABEAAgABAAEAAAADAAwAAgABAAEAAAADAA0AAgABAAEAAAADAA4AAgABAAEAAAADAA8AAgABAAEAAAADABAAAgABAAEAAAADABEAAgABAAEAAAAEAAwAAgABAAEAAAAEAA0AAgABAAEAAAAEAA4AAgABAAEAAAAEAA8AAgABAAEAAAAEABAAAgABAAEAAAAEABEAAgABAAEAAAAFAAwAAgABAAEAAAAFAA0AAgABAAEAAAAFAA4AAgABAAEAAAAFAA8AAgABAAEAAAAFABAAAgABAAEAAAAFABEAAgABAAEAAAAGAAwAAgABAAEAAAAGAA0AAgABAAEAAAAGAA4AAgABAAEAAAAGAA8AAgABAAEAAAAGABAAAgABAAEAAAAGABEAAgABAAEAAAAHAAwAAgABAAEAAAAHAA0AAgABAAEAAAAHAA4AAgABAAEAAAAHAA8AAgABAAEAAAAHABAAAgABAAEAAAAHABEAAgABAAEAAAAIAAwAAgABAAEAAAAIAA0AAgABAAEAAAAIAA4AAgABAAEAAAAIAA8AAgABAAEAAAAIABAAAgABAAEAAAAIABEAAgABAAEAAAAJAAwAAgABAAEAAAAJAA0AAgABAAEAAAAJAA4AAgABAAEAAAAJAA8AAgABAAEAAAAJABAAAgABAAEAAAAJABEAAgABAAEAAAAKAAwAAgABAAEAAAAKAA0AAgABAAEAAAAKAA4AAgABAAEAAAAKAA8AAgABAAEAAAAKABAAAgABAAEAAAAKABEAAgABAAEAAAALAAwAAgABAAEAAAALAA0AAgABAAEAAAALAA4AAgABAAEAAAALAA8AAgABAAEAAAALABAAAgABAAEAAAALABEAAgABAAEAAAAMAAwAAgABAAEAAAAMAA0AAgABAAEAAAAMAA4AAgABAAEAAAAMAA8AAgABAAEAAAAMABAAAgABAAEAAAAMABEAAgABAAEAAAANAAwAAgABAAEAAAANAA0AAgABAAEAAAANAA4AAgABAAEAAAANAA8AAgABAAEAAAANABAAAgABAAEAAAANABEAAgABAAEAAAAOAAwAAgABAAEAAAAOAA0AAgABAAEAAAAOAA4AAgABAAEAAAAOAA8AAgABAAEAAAAOABAAAgABAAEAAAAOABEAAgABAAEAAAAPAAwAAgABAAEAAAAPAA0AAgABAAEAAAAPAA4AAgABAAEAAAAPAA8AAgABAAEAAAAPABAAAgABAAEAAAAPABEAAgABAAEAAAAQAAwAAgABAAEAAAAQAA0AAgABAAEAAAAQAA4AAgABAAEAAAAQAA8AAgABAAEAAAAQABAAAgABAAEAAAAQABEAAgABAAEAAAARAAwAAgABAAEAAAARAA0AAgABAAEAAAARAA4AAgABAAEAAAARAA8AAgABAAEAAAARABAAAgABAAEAAAARABEAAgABAAEAAAASAAwAAgABAAEAAAASAA0AAgABAAEAAAASAA4AAgABAAEAAAASAA8AAgABAAEAAAASABAAAgABAAEAAAASABEAAgABAAEAAAAZAAkAAgAAAAAAAAAZAAoAAgAAAAIAAAAaAAkAAgABAAAAAAAaAAoAAgABAAEAAAAbAAkAAgABAAAAAAAbAAoAAgABAAEAAAAcAAkAAgACAAAAAAAcAAoAAgACAAIAAAD+/wEAAgACAAAAAAD9/wEAAgABAAAAAAD8/wEAAgABAAAAAAD7/wEAAgABAAAAAAD6/wEAAgABAAAAAAD5/wEAAgABAAAAAAD+/wIAAgACAAIAAAD9/wIAAgABAAIAAAD8/wIAAgABAAEAAAD7/wIAAgABAAEAAAD6/wIAAgABAAEAAAD5/wIAAgABAAEAAAD4/wIAAgABAAEAAAD4/wEAAgAJAAEAAAD4/wAAAgAGAAIAAAD3/wAAAgAFAAIAAAD2/wAAAgAFAAIAAAD1/wAAAgAFAAIAAAD0/wAAAgAFAAIAAAD3/wEAAgABAAEAAAD3/wIAAgABAAEAAADz/wAAAgAFAAEAAADz////AgADAAAAAADy/wAAAgAEAAIAAAD2/wEAAgABAAEAAAD1/wEAAgABAAEAAAD0/wEAAgABAAEAAADz/wEAAgABAAEAAAD2/wIAAgABAAEAAAD0/wIAAgABAAEAAADz/wIAAgABAAEAAADy/wEAAgAHAAEAAADx/wEAAgAGAAEAAADy/wIAAgABAAEAAADx/wIAAgABAAEAAADw/wEAAgAFAAIAAADw/wIAAgABAAEAAAD0/wMAAgABAAEAAAD0/wQAAgABAAEAAAD0/wUAAgABAAIAAAD1/wIAAgABAAEAAAD1/wMAAgABAAEAAAD1/wQAAgABAAEAAAD1/wUAAgABAAIAAAD2/wMAAgABAAEAAAD3/wMAAgABAAEAAAD4/wMAAgABAAEAAAD5/wMAAgABAAEAAAD6/wMAAgABAAEAAAD7/wMAAgABAAEAAAD6/wQAAgABAAEAAAD5/wQAAgABAAEAAAD7/wQAAgACAAEAAAD6/wUAAgABAAIAAAD5/wUAAgABAAIAAAD4/wUAAgABAAIAAAD3/wUAAgABAAIAAAD2/wQAAgABAAEAAAD2/wUAAgABAAIAAADz/wQAAgABAAEAAADz/wMAAgABAAEAAADy/wMAAgABAAEAAADx/wMAAgABAAEAAADY/wIAAgAAAAEAAADY/wMAAgAAAAEAAADY/wQAAgAAAAEAAADY/wUAAgAAAAIAAADZ/wIAAgABAAEAAADZ/wMAAgABAAEAAADZ/wQAAgABAAEAAADZ/wUAAgABAAIAAADa/wIAAgABAAEAAADa/wMAAgABAAEAAADa/wQAAgABAAEAAADa/wUAAgABAAIAAADb/wIAAgABAAEAAADb/wMAAgABAAEAAADb/wQAAgABAAEAAADb/wUAAgABAAIAAADc/wIAAgABAAEAAADc/wMAAgABAAEAAADc/wQAAgABAAEAAADc/wUAAgABAAIAAADd/wIAAgABAAEAAADd/wMAAgABAAEAAADd/wQAAgABAAEAAADd/wUAAgABAAIAAADe/wIAAgABAAEAAADe/wMAAgABAAEAAADe/wQAAgABAAEAAADe/wUAAgABAAIAAADf/wIAAgABAAEAAADf/wMAAgABAAEAAADf/wQAAgABAAEAAADf/wUAAgABAAIAAADg/wIAAgABAAEAAADg/wMAAgABAAEAAADg/wQAAgABAAEAAADg/wUAAgABAAIAAADh/wIAAgABAAEAAADh/wMAAgABAAEAAADh/wQAAgABAAEAAADh/wUAAgABAAIAAADi/wIAAgABAAEAAADi/wMAAgABAAEAAADi/wQAAgABAAEAAADi/wUAAgABAAIAAADj/wIAAgABAAEAAADj/wMAAgABAAEAAADj/wQAAgABAAEAAADj/wUAAgABAAIAAADk/wIAAgABAAEAAADk/wMAAgABAAEAAADk/wQAAgABAAEAAADk/wUAAgABAAIAAADl/wIAAgABAAEAAADl/wMAAgABAAEAAADl/wQAAgABAAEAAADl/wUAAgABAAIAAADm/wIAAgABAAEAAADm/wMAAgABAAEAAADm/wQAAgABAAEAAADm/wUAAgABAAIAAADn/wIAAgABAAEAAADn/wMAAgABAAEAAADn/wQAAgABAAEAAADn/wUAAgABAAIAAADo/wIAAgABAAEAAADo/wMAAgABAAEAAADo/wQAAgABAAEAAADo/wUAAgABAAIAAADp/wIAAgABAAEAAADp/wMAAgABAAEAAADp/wQAAgABAAEAAADp/wUAAgABAAIAAADq/wIAAgABAAEAAADq/wMAAgABAAEAAADq/wQAAgABAAEAAADq/wUAAgABAAIAAADr/wIAAgABAAEAAADr/wMAAgABAAEAAADr/wQAAgABAAEAAADr/wUAAgABAAIAAADs/wIAAgABAAEAAADs/wMAAgABAAEAAADs/wQAAgABAAEAAADs/wUAAgABAAIAAADt/wIAAgABAAEAAADt/wMAAgABAAEAAADt/wQAAgABAAEAAADt/wUAAgABAAIAAADu/wIAAgABAAEAAADu/wMAAgABAAEAAADu/wQAAgABAAEAAADu/wUAAgABAAIAAADv/wIAAgABAAEAAADv/wMAAgABAAEAAADv/wQAAgABAAEAAADv/wUAAgABAAIAAADw/wMAAgABAAEAAADw/wQAAgABAAEAAADw/wUAAgABAAIAAADx/wQAAgABAAEAAADx/wUAAgABAAIAAADy/wQAAgABAAEAAADy/wUAAgABAAIAAADz/wUAAgABAAIAAAD3/wQAAgABAAEAAAD4/wQAAgABAAEAAAD7/wUAAgACAAIAAAD8/wMAAgACAAIAAADv/wEAAgAFAAIAAADu/wEAAgAFAAIAAADt/wEAAgAFAAIAAADs/wEAAgAFAAIAAADr/wEAAgAFAAIAAADq/wEAAgAFAAIAAADp/wEAAgAFAAIAAADo/wEAAgAFAAIAAADn/wEAAgAFAAIAAADm/wEAAgAFAAIAAADl/wEAAgAFAAIAAADk/wEAAgAFAAIAAADj/wEAAgAJAAEAAADj/wAAAgAGAAIAAADi/wAAAgAJAAEAAADi////AgAGAAIAAADi/wEAAgABAAEAAADh/wEAAgABAAEAAADh/wAAAgABAAEAAADg/wEAAgABAAEAAADg/wAAAgAHAAEAAADh////AgAFAAIAAADg////AgAEAAIAAADf/wAAAgABAAAAAADf/wEAAgABAAEAAADe/wAAAgABAAAAAADd/wAAAgABAAAAAADc/wAAAgABAAAAAADb/wAAAgABAAAAAADe/wEAAgABAAEAAADd/wEAAgABAAEAAADc/wEAAgABAAEAAADb/wEAAgABAAEAAADa/wEAAgABAAEAAADZ/wEAAgABAAEAAADY/wAAAgAAAAAAAADa/wAAAgABAAAAAADZ/wAAAgABAAAAAADY/wEAAgAAAAEAAACp/wUAAgABAAAAAACp/wYAAgABAAEAAACq/wUAAgABAAAAAACq/wYAAgABAAEAAACq/wcAAgABAAEAAACr/wUAAgABAAAAAACr/wYAAgABAAEAAACr/wcAAgACAAIAAACs/wUAAgACAAAAAACs/wYAAgACAAIAAACg/wUAAgAAAAAAAACg/wYAAgAAAAIAAACh/wUAAgABAAAAAACh/wYAAgABAAEAAACh/wcAAgAAAAIAAACi/wUAAgABAAAAAACi/wYAAgABAAEAAACi/wcAAgABAAEAAACi/wgAAgAAAAIAAACj/wUAAgABAAAAAACj/wYAAgABAAEAAACj/wcAAgABAAEAAACj/wgAAgABAAEAAACj/wkAAgAAAAIAAACk/wUAAgABAAAAAACk/wYAAgABAAEAAACk/wcAAgABAAEAAACk/wgAAgABAAEAAACk/wkAAgABAAIAAACl/wUAAgABAAAAAACl/wYAAgABAAEAAACl/wcAAgABAAEAAACl/wgAAgABAAEAAACl/wkAAgABAAIAAACm/wUAAgABAAAAAACm/wYAAgABAAEAAACm/wcAAgABAAEAAACm/wgAAgABAAEAAACm/wkAAgABAAIAAACn/wUAAgABAAAAAACn/wYAAgABAAEAAACn/wcAAgABAAEAAACn/wgAAgABAAEAAACn/wkAAgABAAIAAACo/wUAAgABAAAAAACo/wYAAgABAAEAAACo/wcAAgABAAEAAACo/wgAAgABAAEAAACo/wkAAgABAAIAAACp/wcAAgABAAEAAACp/wgAAgABAAEAAACp/wkAAgACAAIAAACq/wgAAgACAAIAAADo/+r/AgAAAAAAAADp/+r/AgABAAAAAADq/+r/AgABAAAAAADr/+r/AgABAAAAAADs/+r/AgABAAAAAADt/+r/AgABAAAAAADu/+r/AgABAAAAAADv/+r/AgACAAAAAADo/+v/AgAAAAIAAADp/+v/AgABAAIAAADq/+v/AgABAAIAAADr/+v/AgABAAIAAADs/+v/AgABAAIAAADt/+v/AgABAAIAAADu/+v/AgABAAIAAADv/+v/AgACAAIAAAA=")
+tile_set = SubResource("TileSet_vicok")
+
+[node name="SpawnsPoints" type="Node2D" parent="."]
+
+[node name="SpawnPoint" parent="SpawnsPoints" instance=ExtResource("2_wc4bh")]
+visible = false
+position = Vector2(26, 329)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnsPoints/SpawnPoint"]
+position = Vector2(5.5, 0)
+shape = SubResource("RectangleShape2D_n4gh1")
+
+[node name="SpawnPoint2" parent="SpawnsPoints" instance=ExtResource("2_wc4bh")]
+position = Vector2(-299, -25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnsPoints/SpawnPoint2"]
+position = Vector2(5.5, 0)
+shape = SubResource("RectangleShape2D_n4gh1")
+
+[node name="SpawnPoint3" parent="SpawnsPoints" instance=ExtResource("2_wc4bh")]
+position = Vector2(-1196, -327)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnsPoints/SpawnPoint3"]
+position = Vector2(3, -1)
+shape = SubResource("RectangleShape2D_n4gh1")
+
+[node name="Killables" type="Node2D" parent="."]
+
+[node name="LandMine" parent="Killables" instance=ExtResource("7_t7am6")]
+position = Vector2(716, 153)
+
+[node name="LandMine2" parent="Killables" instance=ExtResource("7_t7am6")]
+position = Vector2(-140, 25)
+
+[node name="LandMine3" parent="Killables" instance=ExtResource("7_t7am6")]
+position = Vector2(-96, 25)
+
+[node name="LandMine4" parent="Killables" instance=ExtResource("7_t7am6")]
+position = Vector2(-96, 25)
+
+[node name="Spikes" parent="Killables" instance=ExtResource("4_sqwt6")]
+position = Vector2(232, 342)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spikes17" parent="Killables" instance=ExtResource("4_sqwt6")]
+position = Vector2(251, 342)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spikes18" parent="Killables" instance=ExtResource("4_sqwt6")]
+position = Vector2(271, 342)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spikes26" parent="Killables" instance=ExtResource("4_sqwt6")]
+position = Vector2(-2683, 140)
+
+[node name="Spikes27" parent="Killables" instance=ExtResource("4_sqwt6")]
+position = Vector2(-2720, 140)
+
+[node name="Spikes28" parent="Killables" instance=ExtResource("4_sqwt6")]
+position = Vector2(-2759, 140)
+
+[node name="Spikes29" parent="Killables" instance=ExtResource("4_sqwt6")]
+position = Vector2(-2798, 140)
+
+[node name="Spikes30" parent="Killables" instance=ExtResource("4_sqwt6")]
+position = Vector2(-2837, 140)
+
+[node name="Spikes31" parent="Killables" instance=ExtResource("4_sqwt6")]
+position = Vector2(-2876, 140)
+
+[node name="Spikes32" parent="Killables" instance=ExtResource("4_sqwt6")]
+position = Vector2(-2915, 140)
+
+[node name="Spikes33" parent="Killables" instance=ExtResource("4_sqwt6")]
+position = Vector2(-2953, 140)
+
+[node name="Spikes34" parent="Killables" instance=ExtResource("4_sqwt6")]
+position = Vector2(-2990, 140)
+
+[node name="Spikes35" parent="Killables" instance=ExtResource("4_sqwt6")]
+position = Vector2(-3029, 140)
+
+[node name="Spikes36" parent="Killables" instance=ExtResource("4_sqwt6")]
+position = Vector2(-3058, 150)
+scale = Vector2(0.585, 0.585)
+
+[node name="Spikes19" parent="Killables" instance=ExtResource("4_sqwt6")]
+position = Vector2(288, 342)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spikes20" parent="Killables" instance=ExtResource("4_sqwt6")]
+position = Vector2(307, 342)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spikes21" parent="Killables" instance=ExtResource("4_sqwt6")]
+position = Vector2(307, 342)
+scale = Vector2(0.5, 0.5)
+
+[node name="Spikes2" parent="Killables" instance=ExtResource("4_sqwt6")]
+position = Vector2(406, -221)
+rotation = -3.14159
+scale = Vector2(0.7, 0.7)
+
+[node name="Spikes22" parent="Killables" instance=ExtResource("4_sqwt6")]
+position = Vector2(433, -221)
+rotation = -3.14159
+scale = Vector2(0.7, 0.7)
+
+[node name="Spikes23" parent="Killables" instance=ExtResource("4_sqwt6")]
+position = Vector2(460, -221)
+rotation = -3.14159
+scale = Vector2(0.7, 0.7)
+
+[node name="Spikes24" parent="Killables" instance=ExtResource("4_sqwt6")]
+position = Vector2(486, -221)
+rotation = -3.14159
+scale = Vector2(0.7, 0.7)
+
+[node name="Spikes25" parent="Killables" instance=ExtResource("4_sqwt6")]
+position = Vector2(511, -221)
+rotation = -3.14159
+scale = Vector2(0.7, 0.7)
+
+[node name="KillBox" parent="Killables" instance=ExtResource("5_j3bwq")]
+position = Vector2(103, 663)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killables/KillBox"]
+position = Vector2(-563.5, 250)
+shape = SubResource("RectangleShape2D_451vt")
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Platfroms" type="Node2D" parent="."]
+
+[node name="OneWays" type="Node2D" parent="Platfroms"]
+
+[node name="OneWaysPlatforms" parent="Platfroms/OneWays" instance=ExtResource("3_uxddl")]
+position = Vector2(758, 168)
+
+[node name="OneWaysPlatforms2" parent="Platfroms/OneWays" instance=ExtResource("3_uxddl")]
+position = Vector2(936, 75)
+
+[node name="OneWaysPlatforms3" parent="Platfroms/OneWays" instance=ExtResource("3_uxddl")]
+position = Vector2(614, -13)
+
+[node name="OneWaysPlatforms5" parent="Platfroms/OneWays" instance=ExtResource("3_uxddl")]
+position = Vector2(298, -14)
+
+[node name="OneWaysPlatforms6" parent="Platfroms/OneWays" instance=ExtResource("3_uxddl")]
+position = Vector2(289, -144)
+
+[node name="OneWaysPlatforms7" parent="Platfroms/OneWays" instance=ExtResource("3_uxddl")]
+position = Vector2(706, -240)
+
+[node name="OneWaysPlatforms8" parent="Platfroms/OneWays" instance=ExtResource("3_uxddl")]
+position = Vector2(-1669, 30)
+
+[node name="OneWaysPlatforms9" parent="Platfroms/OneWays" instance=ExtResource("3_uxddl")]
+position = Vector2(-1199, -195)
+
+[node name="OneWaysPlatforms10" parent="Platfroms/OneWays" instance=ExtResource("3_uxddl")]
+position = Vector2(-1196, -297)
+
+[node name="OneWaysPlatforms11" parent="Platfroms/OneWays" instance=ExtResource("3_uxddl")]
+position = Vector2(-1192, -392)
+
+[node name="OneWaysPlatforms12" parent="Platfroms/OneWays" instance=ExtResource("3_uxddl")]
+position = Vector2(-1192, -502)
+
+[node name="OneWaysPlatforms13" parent="Platfroms/OneWays" instance=ExtResource("3_uxddl")]
+position = Vector2(-1192, -599)
+
+[node name="OneWaysPlatforms14" parent="Platfroms/OneWays" instance=ExtResource("3_uxddl")]
+position = Vector2(-1192, -599)
+
+[node name="OneWaysPlatforms15" parent="Platfroms/OneWays" instance=ExtResource("3_uxddl")]
+position = Vector2(-933, -691)
+
+[node name="OneWaysPlatforms4" parent="Platfroms/OneWays" instance=ExtResource("3_uxddl")]
+position = Vector2(458, -241)
+rotation = -3.14159
+
+[node name="TrollFall" type="Node2D" parent="Platfroms"]
+
+[node name="TrollFallPlatform" parent="Platfroms/TrollFall" instance=ExtResource("6_2607c")]
+position = Vector2(96, -144)
+
+[node name="TrollFallPlatform2" parent="Platfroms/TrollFall" instance=ExtResource("6_2607c")]
+position = Vector2(-2602, -87)
+
+[node name="TrollFallPlatform3" parent="Platfroms/TrollFall" instance=ExtResource("6_2607c")]
+position = Vector2(-1737, -276)
+
+[node name="TrollFallPlatform4" parent="Platfroms/TrollFall" instance=ExtResource("6_2607c")]
+position = Vector2(-1564, -249)
+
+[node name="TrollFallPlatform5" parent="Platfroms/TrollFall" instance=ExtResource("6_2607c")]
+position = Vector2(-1393, -215)
+
+[node name="TrollFallPlatform6" parent="Platfroms/TrollFall" instance=ExtResource("6_2607c")]
+position = Vector2(-1393, -215)
+
+[node name="TrollDisapear" type="Node2D" parent="Platfroms"]
+
+[node name="TrollPlatform" parent="Platfroms/TrollDisapear" instance=ExtResource("9_xahrq")]
+position = Vector2(-109, -37)
+_Reapear = false
+
+[node name="TrollPlatform2" parent="Platfroms/TrollDisapear" instance=ExtResource("9_xahrq")]
+position = Vector2(-1881, 38)
+
+[node name="TrollPlatform3" parent="Platfroms/TrollDisapear" instance=ExtResource("9_xahrq")]
+position = Vector2(-2077, -48)
+
+[node name="TrollPlatform4" parent="Platfroms/TrollDisapear" instance=ExtResource("9_xahrq")]
+position = Vector2(-1980, -217)
+
+[node name="TrollPlatform5" parent="Platfroms/TrollDisapear" instance=ExtResource("9_xahrq")]
+position = Vector2(-2311, -144)
+
+[node name="Fake" type="Node2D" parent="Platfroms"]
+
+[node name="FakePlatforms" parent="Platfroms/Fake" instance=ExtResource("9_8sh4n")]
+position = Vector2(-1420, 4)
+
+[node name="FakePlatforms2" parent="Platfroms/Fake" instance=ExtResource("9_8sh4n")]
+position = Vector2(-329, -668)

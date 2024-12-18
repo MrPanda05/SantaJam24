@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://fberc1pijtul"]
+
+[node name="BaseTrigger2D" type="Area2D"]
+editor_description = "Just a trigger"
+collision_layer = 16
+collision_mask = 0

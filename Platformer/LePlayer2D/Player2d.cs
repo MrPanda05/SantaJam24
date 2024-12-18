@@ -1,7 +1,9 @@
 using Commons;
 using Commons._2D;
 using Commons.Components;
+using Commons.Singletons;
 using Godot;
+using Platformer.TrollsElements;
 using System;
 
 namespace Platformer.LePlayer2D
@@ -27,13 +29,31 @@ namespace Platformer.LePlayer2D
 
 
         private bool _WasOnFloor;
+
+        private bool _OnOneWayPlatform;
         public static Action OnPlayerDeath;
 
+        public bool Moving { get; private set; }
+
+        private bool IsNearZero(float value)
+        {
+            if (value == 0) return true;
+            if(value > 0.05f && value < 0.5f)
+            {
+                return true;
+            }
+            if (value < -0.05f && value > -0.5f)
+            {
+                return true;
+            }
+            return false;
+        }
 
         #region PlayerMovement
         private void MovePlayer()
         {
             Vector2 direction = Input.GetVector("Left", "Right", "Up", "Down");
+            Moving = Input.IsActionPressed("Left");
             if (direction != Vector2.Zero)
             {
                 _vel.X = Mathf.Lerp(_vel.X, direction.X * _velocityComponent.Speed, _velocityComponent.Acel);
@@ -42,7 +62,7 @@ namespace Platformer.LePlayer2D
             else
             {
                 _vel.X = Mathf.Lerp(_vel.X, 0, _velocityComponent.Friction);
-                if (Mathf.IsEqualApprox(_vel.X, 0)) _vel.X = 0;
+                if (IsNearZero(_vel.X)) _vel.X = 0;
             }
         }
         private void Jump()
@@ -64,12 +84,12 @@ namespace Platformer.LePlayer2D
                 {
                     _vel.Y = -_velocityComponent.MaxForceJump;
                     Velocity = _vel;
-                    GD.Print("Low jump " + _vel.Y);
+                    //GD.Print("Low jump " + _vel.Y);
                 }
             }
             else
             {
-                GD.Print("High jump " + _vel.Y);
+                //GD.Print("High jump " + _vel.Y);
 
             }
         }
@@ -80,13 +100,13 @@ namespace Platformer.LePlayer2D
             {
                 JumpHeightTimer.Start();
                 Jump();
-                GD.Print("Jump was buffered");
+                //GD.Print("Jump was buffered");
                 Velocity = _vel;
                 MoveAndSlide();
                 return;
             }
             _BufferJump = false;
-            GD.Print("Jump Was not buffered");
+            //GD.Print("Jump Was not buffered");
 
         }
 
@@ -102,7 +122,7 @@ namespace Platformer.LePlayer2D
         {
             if(_vel.Y > 0)
             {
-                GD.Print("I hit an enemy, please kill yourself enemy");
+                //GD.Print("I hit an enemy, please kill yourself enemy");
                 _vel.Y = -_velocityComponent.ForceJump/1.3f;
                 Velocity = _vel;
                 //Add some light timer to avoid player dying just in case
@@ -111,9 +131,28 @@ namespace Platformer.LePlayer2D
 
         public void OnPlayerHitboxAreaEntered(Area2D area)
         {
-            if (_vel.Y > 0) return;
-            GD.Print("Fuck! I got hit");
-            _healthComponent.TakeDamage();//Add way detect when player dies
+            if(area.CollisionLayer == 1024)//Hit Enemy
+            {
+                if (_vel.Y > 0) return;
+                _healthComponent.TakeDamage();
+                return;
+            }
+            if(area.CollisionLayer == 2048)//Hit kill area
+            {
+                GD.Print("I hit a kill barrier");
+                _healthComponent.TakeDamage();
+                return;
+            }
+        }
+        public void OnPlayerFeetBodyEntered(Node2D body)
+        {
+            GD.Print("On one way");
+            _OnOneWayPlatform = true;
+        }
+        public void OnPlayerFeetBodyExited(Node2D body)
+        {
+            GD.Print("Exited On one way");
+            _OnOneWayPlatform = false;
         }
         #endregion
 
@@ -122,13 +161,14 @@ namespace Platformer.LePlayer2D
             OnPlayerDeath?.Invoke();
             //ProcessMode = ProcessModeEnum.Disabled; fix this
             //Visible = false;
-            GD.Print("FUCK I DIED FUCK");
+            //GD.Print("FUCK I DIED FUCK");
         }
-
+        
         public override void _Ready()
         {
             _velocityComponent = GetNode<VelocityComponent2d>("VelocityComponent2D");
             _healthComponent.OnDeath += PlayerDeath;
+            GameManager.Instance.SetPlayer(this);
         }
 
         public override void _PhysicsProcess(double delta)
@@ -142,10 +182,17 @@ namespace Platformer.LePlayer2D
             //Jump
             if ((Input.IsActionJustPressed("Jump")))
             {
-                IWantToJump();
+                JumpDecider();
+            }
+            if(_OnOneWayPlatform && Input.IsActionPressed("Down"))
+            {
+                var pos = Position;
+                pos.Y += 1;
+                Position = pos;
             }
             //Movement
             MovePlayer();
+            //GD.Print(Velocity.X);
             _WasOnFloor = IsOnFloor();
             Velocity = _vel;
             MoveAndSlide();
@@ -156,24 +203,24 @@ namespace Platformer.LePlayer2D
             }
         }
 
-        private void IWantToJump()
+        private void JumpDecider()
         {
             if (IsOnFloor())
             {
-                GD.Print("Jump");
+                //GD.Print("Jump");
                 JumpHeightTimer.Start();
                 Jump();
                 return;
             }
             if(!IsOnFloor() && !_CoyoteTime)
             {
-                GD.Print("Buffer the jump");
+                //GD.Print("Buffer the jump");
                 BufferTimer.Start();
                 return;
             }
             if(!IsOnFloor() && _CoyoteTime)
             {
-                GD.Print("Coyote please!");
+                //GD.Print("Coyote please!");
                 JumpHeightTimer.Start();
                 Jump();
                 return;
