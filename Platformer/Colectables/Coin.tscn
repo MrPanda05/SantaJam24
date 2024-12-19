@@ -44,7 +44,6 @@ script = ExtResource("1_brf63")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ColectableArea"]
 position = Vector2(1.2666e-06, 0)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_k4fi6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

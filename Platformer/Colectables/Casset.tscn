@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://nl23p4768kia"]
+
+[ext_resource type="Script" path="res://Platformer/Colectables/Casset.cs" id="1_dbydw"]
+[ext_resource type="Texture2D" uid="uid://cyqhf0temgteq" path="res://Art/2D/cassete.png" id="1_mk50y"]
+[ext_resource type="PackedScene" uid="uid://cotrs37lvx6mf" path="res://Commons/Colectables/ColectableArea.tscn" id="2_d5d46"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s7io7"]
+size = Vector2(16, 12)
+
+[sub_resource type="Animation" id="Animation_72pkt"]
+resource_name = "Iddle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -4)]
+}
+
+[sub_resource type="Animation" id="Animation_qm7xy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pivot:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0no1j"]
+_data = {
+"Iddle": SubResource("Animation_72pkt"),
+"RESET": SubResource("Animation_qm7xy")
+}
+
+[node name="Casset" type="Node2D"]
+scale = Vector2(2, 2)
+script = ExtResource("1_dbydw")
+
+[node name="ColectableArea" parent="." instance=ExtResource("2_d5d46")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColectableArea"]
+shape = SubResource("RectangleShape2D_s7io7")
+
+[node name="Pivot" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Pivot"]
+texture = ExtResource("1_mk50y")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0no1j")
+}
+autoplay = "Iddle"

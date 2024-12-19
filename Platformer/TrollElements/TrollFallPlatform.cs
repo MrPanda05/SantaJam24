@@ -18,21 +18,37 @@ namespace Platformer.TrollsElements
 
         private float _delta;
         [Export]
-        private float _Speed = 200;
+        private float _SpeedY = 200;
+        [Export]
+        private float _SpeedX = 0;
         //Entered
         public void OnTriggerAreaEntered(Area2D area)
         {
-            _PlayerOnPlatform = true;
+            if (area.CollisionLayer == 512)
+            {
+                _PlayerOnPlatform = true;
+            }
+            if (area.CollisionLayer == 8192)
+            {
+
+                _SpeedX *= -1;
+                _SpeedY *= -1;
+            }
         }
         
         //Exits
         public void OnTriggerAreaExited(Area2D area)
         {
-            timer.Start();
+            if (area.CollisionLayer == 512)
+            {
+                _PlayerOnPlatform = false;
+                timer.Start();
+            }
         }
        public void OnTimerTimeout()
         {
-            _PlayerOnPlatform = false;
+            if (_PlayerOnPlatform) return;
+            _PlayerOnPlatform = false;//Chante this
             _Body2D.GlobalPosition = GlobalPosition;
         }
 
@@ -42,7 +58,7 @@ namespace Platformer.TrollsElements
         }
         public override void _PhysicsProcess(double delta)
         {
-            if (!_PlayerOnPlatform) return;
+            if (!_PlayerOnPlatform && timer.TimeLeft <= 0) return;
             _delta = (float)delta;
             TrollMoment();
 
@@ -50,7 +66,8 @@ namespace Platformer.TrollsElements
         }
         public void TrollMoment()
         {
-            _Body2D.Position += new Vector2(0, _Speed) * _delta;
+            _Body2D.Position += new Vector2(_SpeedX, _SpeedY) * _delta;
+
         }
     }
 }

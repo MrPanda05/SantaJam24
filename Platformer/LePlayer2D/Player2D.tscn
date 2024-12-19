@@ -120,9 +120,9 @@ metadata/_edit_group_ = true
 process_mode = 1
 scale = Vector2(0.994576, 1)
 zoom = Vector2(0.8, 0.8)
-drag_horizontal_offset = 1.0
-drag_vertical_offset = -0.44
-drag_left_margin = 0.3
+drag_horizontal_offset = 0.45
+drag_vertical_offset = -0.5
+drag_left_margin = 0.4
 drag_top_margin = 0.4
 drag_right_margin = 0.1
 

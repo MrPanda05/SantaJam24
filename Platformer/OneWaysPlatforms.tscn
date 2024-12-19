@@ -1,18 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://n5kvnw5fna0"]
+[gd_scene load_steps=3 format=3 uid="uid://n5kvnw5fna0"]
 
-[ext_resource type="Texture2D" uid="uid://mtte5m64jked" path="res://Art/2D/tilesetoriginals.png" id="1_h36gm"]
 [ext_resource type="PackedScene" uid="uid://cy04th50jasdu" path="res://Commons/2D/OneWayStaticBody.tscn" id="2_0cc4a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylldr"]
 size = Vector2(130, 12)
 
 [node name="OneWaysPlatforms" type="Node2D"]
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(4, 4)
-texture = ExtResource("1_h36gm")
-region_enabled = true
-region_rect = Rect2(208, 0, 32, 16)
 
 [node name="OneWay" parent="." instance=ExtResource("2_0cc4a")]
 

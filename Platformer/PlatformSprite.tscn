@@ -6,4 +6,4 @@
 scale = Vector2(4, 4)
 texture = ExtResource("1_lpsyk")
 region_enabled = true
-region_rect = Rect2(176, 0, 64, 32)
+region_rect = Rect2(208, 16, 32, 16)

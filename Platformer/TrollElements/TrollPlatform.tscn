@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://1dsvrgva1irb"]
+[gd_scene load_steps=6 format=3 uid="uid://1dsvrgva1irb"]
 
 [ext_resource type="PackedScene" uid="uid://fberc1pijtul" path="res://Commons/2D/BaseTrigger2d.tscn" id="1_33080"]
 [ext_resource type="Script" path="res://Platformer/TrollElements/TrollPlatform.cs" id="1_pr7co"]
-[ext_resource type="Texture2D" uid="uid://mtte5m64jked" path="res://Art/2D/tilesetoriginals.png" id="2_ae0gv"]
 [ext_resource type="PackedScene" uid="uid://dsyih5r2pftlw" path="res://Commons/2D/NormalPlatform.tscn" id="4_6s8iv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bprcq"]
@@ -17,12 +16,6 @@ _Reapear = true
 _hitBox = NodePath("TrollTrigger/CollisionShape2D")
 _area = NodePath("NormalPlatform/CollisionShape2D")
 timer = NodePath("Timer")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(4, 4)
-texture = ExtResource("2_ae0gv")
-region_enabled = true
-region_rect = Rect2(176, 0, 32, 16)
 
 [node name="TrollTrigger" parent="." instance=ExtResource("1_33080")]
 collision_mask = 512

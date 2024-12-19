@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj57nw146jbrk"]
+
+[ext_resource type="Script" path="res://Platformer/TrollElements/MovePlatformButton.cs" id="1_7tpom"]
+
+[node name="MovePlatformButton" type="Node2D"]
+script = ExtResource("1_7tpom")

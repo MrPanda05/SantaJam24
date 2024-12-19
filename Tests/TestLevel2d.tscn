@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://hi5ueaaxmd0t"]
+[gd_scene load_steps=22 format=4 uid="uid://hi5ueaaxmd0t"]
 
 [ext_resource type="PackedScene" uid="uid://b0jdkgdnht7ot" path="res://Platformer/LePlayer2D/Player2D.tscn" id="1_r4jja"]
 [ext_resource type="PackedScene" uid="uid://dp3u0ihwthj4r" path="res://Platformer/Colectables/Coin.tscn" id="2_lpvfx"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://4st2ompw5bvq" path="res://Platformer/Triggers/SpawnCoinTrigger.tscn" id="11_myud0"]
 [ext_resource type="PackedScene" uid="uid://d13hpad5ntra" path="res://Platformer/Enemies/AI/ChangeDirArea.tscn" id="12_vb5hx"]
 [ext_resource type="PackedScene" uid="uid://bcdksvifm5hmd" path="res://Platformer/SpawnPoint.tscn" id="13_85cyp"]
+[ext_resource type="PackedScene" uid="uid://18oifxvk8tgu" path="res://Platformer/DirtyPlatformSprite.tscn" id="14_ugkyy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vg5tr"]
 size = Vector2(85, 83)
@@ -79,10 +80,13 @@ size = Vector2(29, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cpavl"]
 size = Vector2(30, 48)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oaxmm"]
+size = Vector2(90, 69)
+
 [node name="TestLevel2D" type="Node2D"]
 
 [node name="Player2D" parent="." groups=["Player2D"] instance=ExtResource("1_r4jja")]
-position = Vector2(684, 287)
+position = Vector2(2770, 233)
 
 [node name="Coin" parent="." instance=ExtResource("2_lpvfx")]
 position = Vector2(2080, 424)
@@ -175,3 +179,40 @@ position = Vector2(1811, 329)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawnPoint2"]
 position = Vector2(5, 0)
 shape = SubResource("RectangleShape2D_cpavl")
+
+[node name="TrollFallPlatform3" parent="." instance=ExtResource("8_bextq")]
+position = Vector2(2959, 229)
+_SpeedY = 0.0
+_SpeedX = 100.0
+
+[node name="DirtyPlatformSprite" parent="TrollFallPlatform3/NormalAnimetedPlatform" index="2" instance=ExtResource("14_ugkyy")]
+
+[node name="ChangeDirArea3" parent="." instance=ExtResource("12_vb5hx")]
+position = Vector2(3087, 211)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeDirArea3"]
+position = Vector2(35, 24.5)
+shape = SubResource("RectangleShape2D_oaxmm")
+
+[node name="ChangeDirArea4" parent="." instance=ExtResource("12_vb5hx")]
+position = Vector2(2610, 219)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeDirArea4"]
+position = Vector2(35, 24.5)
+shape = SubResource("RectangleShape2D_oaxmm")
+
+[node name="ChangeDirArea5" parent="." instance=ExtResource("12_vb5hx")]
+position = Vector2(2941, 481)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeDirArea5"]
+position = Vector2(35, 24.5)
+shape = SubResource("RectangleShape2D_oaxmm")
+
+[node name="ChangeDirArea6" parent="." instance=ExtResource("12_vb5hx")]
+position = Vector2(2925, -100)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChangeDirArea6"]
+position = Vector2(35, 24.5)
+shape = SubResource("RectangleShape2D_oaxmm")
+
+[editable path="TrollFallPlatform3"]

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ppy65uepa5ib"]
+
+[ext_resource type="PackedScene" uid="uid://dgnjdaot8r64a" path="res://Platformer/GrassPlatformSprite.tscn" id="1_4r7bj"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nksbr"]
+load_path = "res://.godot/imported/tilesetoriginals.png-853d67bc8a7ac8c1b9a0075b0830afbb.ctex"
+
+[node name="ThicGrassPlatformSprite" instance=ExtResource("1_4r7bj")]
+texture = SubResource("CompressedTexture2D_nksbr")
+region_rect = Rect2(176, 16, 32, 16)
