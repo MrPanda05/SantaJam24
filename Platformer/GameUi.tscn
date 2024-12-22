@@ -1,0 +1,110 @@
+[gd_scene load_steps=4 format=3 uid="uid://c5kwyfoqtyy8b"]
+
+[ext_resource type="Script" path="res://Platformer/GameUi.cs" id="1_3rhr1"]
+[ext_resource type="Texture2D" uid="uid://bpwimhp4kajcy" path="res://Art/2D/coin1.png" id="1_sv36w"]
+[ext_resource type="Texture2D" uid="uid://cbmivekd1b33y" path="res://Art/2D/playerdeadt1.png" id="2_u7471"]
+
+[node name="GameUI" type="CanvasLayer" node_paths=PackedStringArray("deathLabel", "coinLabel", "Tips") groups=["GameUI"]]
+script = ExtResource("1_3rhr1")
+deathLabel = NodePath("PlayerUI/DeathCount")
+coinLabel = NodePath("PlayerUI/CoinLabel")
+Tips = NodePath("Tips")
+
+[node name="PlayerUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CoinLabel" type="Label" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.125
+anchor_top = 0.056
+anchor_right = 0.203
+anchor_bottom = 0.178
+offset_top = -0.16
+offset_right = 0.0799866
+offset_bottom = -0.0800018
+theme_override_font_sizes/font_size = 30
+text = "0
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CoinRect" type="TextureRect" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.031
+anchor_top = 0.056
+anchor_right = 0.109
+anchor_bottom = 0.194
+offset_left = 0.16
+offset_top = -0.16
+offset_right = 0.239998
+offset_bottom = 0.159996
+texture = ExtResource("1_sv36w")
+
+[node name="DeathCount" type="Label" parent="PlayerUI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -116.765
+offset_top = 20.0
+offset_right = -66.765
+offset_bottom = 70.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 30
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DeathRect" type="TextureRect" parent="PlayerUI"]
+layout_mode = 0
+offset_left = 570.0
+offset_top = 20.0
+offset_right = 620.0
+offset_bottom = 70.0
+texture = ExtResource("2_u7471")
+
+[node name="Tips" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Tips"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.389
+anchor_top = 0.468
+anchor_right = 0.611
+anchor_bottom = 0.532
+offset_left = 51.04
+offset_top = 0.019989
+offset_right = -51.04
+offset_bottom = -0.0200043
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press R to respaw!"
+
+[node name="Label2" type="Label" parent="Tips"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.389
+anchor_top = 0.468
+anchor_right = 0.611
+anchor_bottom = 0.532
+offset_left = -0.960022
+offset_top = 63.52
+offset_right = -3.04001
+offset_bottom = 63.48
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press P to give up!"

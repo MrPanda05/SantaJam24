@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://ba7l1aohyxqu7"]
+
+[ext_resource type="Script" path="res://Platformer/TrollElements/ButtonShowPlatform.cs" id="1_fl62v"]
+[ext_resource type="Script" path="res://Platformer/TrollElements/TrollFallPlatform.cs" id="2_ps4yo"]
+[ext_resource type="PackedScene" uid="uid://bd6m1fwn8pc8v" path="res://Platformer/CastleRedBrick.tscn" id="2_t1w8b"]
+[ext_resource type="PackedScene" uid="uid://bt8l2h12ohmq7" path="res://Commons/2D/NormalAnimetedPlatform.tscn" id="3_ws7nu"]
+[ext_resource type="PackedScene" uid="uid://fberc1pijtul" path="res://Commons/2D/BaseTrigger2d.tscn" id="4_apa7x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jdbmb"]
+size = Vector2(130, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jh7rv"]
+size = Vector2(130, 17)
+
+[node name="ButtonShowPlatform" type="Node2D" node_paths=PackedStringArray("_myPlatform")]
+script = ExtResource("1_fl62v")
+_myPlatform = NodePath("TrollFallPlatform")
+
+[node name="TrollFallPlatform" type="Node2D" parent="." node_paths=PackedStringArray("timer")]
+process_mode = 4
+script = ExtResource("2_ps4yo")
+timer = NodePath("Timer")
+_SpeedY = -200.0
+
+[node name="NormalAnimetedPlatform" parent="TrollFallPlatform" instance=ExtResource("3_ws7nu")]
+disable_mode = 2
+metadata/_edit_group_ = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrollFallPlatform/NormalAnimetedPlatform"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_jdbmb")
+
+[node name="Trigger" parent="TrollFallPlatform/NormalAnimetedPlatform" instance=ExtResource("4_apa7x")]
+collision_mask = 8704
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TrollFallPlatform/NormalAnimetedPlatform/Trigger"]
+position = Vector2(0, -3.5)
+shape = SubResource("RectangleShape2D_jh7rv")
+
+[node name="PlatformSprite" parent="TrollFallPlatform/NormalAnimetedPlatform" instance=ExtResource("2_t1w8b")]
+position = Vector2(0, -4)
+
+[node name="Timer" type="Timer" parent="TrollFallPlatform"]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="area_entered" from="TrollFallPlatform/NormalAnimetedPlatform/Trigger" to="TrollFallPlatform" method="OnTriggerAreaEntered"]
+[connection signal="area_exited" from="TrollFallPlatform/NormalAnimetedPlatform/Trigger" to="TrollFallPlatform" method="OnTriggerAreaExited"]
+[connection signal="timeout" from="TrollFallPlatform/Timer" to="TrollFallPlatform" method="OnTimerTimeout"]

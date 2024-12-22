@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://j8pus4xkf8xj"]
+
+[ext_resource type="PackedScene" uid="uid://bfd786sjm5n3y" path="res://Platformer/PlatformSprite.tscn" id="1_0x8ih"]
+
+[node name="CastleBrick" instance=ExtResource("1_0x8ih")]
+scale = Vector2(4.23, 4.23)
+region_rect = Rect2(224, 16, 32, 16)

@@ -12,6 +12,9 @@ namespace Commons.Singletons
         private Player2d _player2d;
 
         public SpawnPoint LeSpawnPoint;
+
+        public Inventory inventory;
+        public Action OnPlayerRespawn;
         public override void _Ready()
         {
             if(Instance != null)
@@ -21,6 +24,8 @@ namespace Commons.Singletons
             }
             Instance = this;
             Player2d.OnPlayerDeath += KillPlayer;
+            inventory = GetNode<Inventory>("Inventory");
+            GD.Print(inventory.CoinCount);
         }
         public override void _PhysicsProcess(double delta)
         {
@@ -28,6 +33,8 @@ namespace Commons.Singletons
             if (Input.IsActionJustPressed("Respaw") && !_player2d.Visible)
             {
                 RespawnPlayer();
+                _player2d.isPlayerDead = false;
+                OnPlayerRespawn?.Invoke();
             }
         }
         public void SetSpawnPoint(SpawnPoint spawn)

@@ -1,0 +1,14 @@
+[remap]
+
+importer="func_godot.map"
+type="Resource"
+uid="uid://b0jrca2j3ehgj"
+path="res://.godot/imported/tittlescreen.map-d595ba531040a7f1e3f50c2227ba0549.tres"
+
+[deps]
+
+source_file="res://Quake/maps/tittlescreen.map"
+dest_files=["res://.godot/imported/tittlescreen.map-d595ba531040a7f1e3f50c2227ba0549.tres"]
+
+[params]
+

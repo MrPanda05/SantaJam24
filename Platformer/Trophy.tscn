@@ -1,0 +1,65 @@
+[gd_scene load_steps=8 format=3 uid="uid://dcw7yj88lknvi"]
+
+[ext_resource type="PackedScene" uid="uid://cotrs37lvx6mf" path="res://Commons/Colectables/ColectableArea.tscn" id="1_4hofi"]
+[ext_resource type="Texture2D" uid="uid://dl1p7w220cxaw" path="res://Art/2D/trophy.png" id="1_ayddb"]
+[ext_resource type="Script" path="res://Platformer/Trophy.cs" id="1_xehcb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fe0k1"]
+size = Vector2(16, 14)
+
+[sub_resource type="Animation" id="Animation_ek67t"]
+resource_name = "Iddle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.2, 1.2)]
+}
+
+[sub_resource type="Animation" id="Animation_ws6vo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_grihi"]
+_data = {
+"Iddle": SubResource("Animation_ek67t"),
+"RESET": SubResource("Animation_ws6vo")
+}
+
+[node name="Trophy" type="Node2D"]
+scale = Vector2(3.5, 3.5)
+script = ExtResource("1_xehcb")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_ayddb")
+
+[node name="ColectableArea" parent="." instance=ExtResource("1_4hofi")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColectableArea"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_fe0k1")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_grihi")
+}
+autoplay = "Iddle"

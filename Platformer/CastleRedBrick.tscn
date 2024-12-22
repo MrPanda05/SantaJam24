@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bd6m1fwn8pc8v"]
+
+[ext_resource type="PackedScene" uid="uid://bfd786sjm5n3y" path="res://Platformer/PlatformSprite.tscn" id="1_786y0"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_aousv"]
+load_path = "res://.godot/imported/tilesetscastle.png-a1c876da718bc72c631d246358ad6a25.ctex"
+
+[node name="PlatformSprite" instance=ExtResource("1_786y0")]
+texture = SubResource("CompressedTexture2D_aousv")

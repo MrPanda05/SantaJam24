@@ -1,0 +1,100 @@
+[gd_scene load_steps=3 format=3 uid="uid://tw4rgxhdrfhu"]
+
+[ext_resource type="Script" path="res://Platformer/Levels/TittleScreen2D.cs" id="1_hdi1w"]
+[ext_resource type="Theme" uid="uid://bftdgss8cbqmu" path="res://ButtonThing.tres" id="2_ea8po"]
+
+[node name="TittleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hdi1w")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.202997, 5.77569e-06, 0.870126, 1)
+
+[node name="Tittle" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PlayButton" type="Button" parent="Tittle"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.387
+anchor_top = 0.578
+anchor_right = 0.612
+anchor_bottom = 0.667
+offset_left = 0.319977
+offset_top = -0.0800018
+offset_right = 0.319977
+offset_bottom = -0.120026
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ea8po")
+text = "Play
+"
+
+[node name="Settings" type="Button" parent="Tittle"]
+visible = false
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.387
+anchor_top = 0.578
+anchor_right = 0.612
+anchor_bottom = 0.667
+offset_left = 0.319977
+offset_top = 55.92
+offset_right = 0.319977
+offset_bottom = 55.88
+grow_horizontal = 2
+grow_vertical = 2
+text = "Settings
+"
+
+[node name="Exit" type="Button" parent="Tittle"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.387
+anchor_top = 0.578
+anchor_right = 0.612
+anchor_bottom = 0.667
+offset_left = 0.319977
+offset_top = 71.92
+offset_right = 0.319977
+offset_bottom = 71.88
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_ea8po")
+text = "Exit
+"
+
+[node name="Label" type="Label" parent="Tittle"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.178
+anchor_right = 1.0
+anchor_bottom = 0.489
+offset_top = -1.08
+offset_bottom = -0.0400085
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 61
+text = "Cupcake's tower! "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="button_down" from="Tittle/PlayButton" to="." method="OnPlayButtonButtonDown"]
+[connection signal="button_down" from="Tittle/Exit" to="." method="OnExitButtonDown"]

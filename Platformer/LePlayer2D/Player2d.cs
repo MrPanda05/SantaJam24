@@ -33,6 +33,14 @@ namespace Platformer.LePlayer2D
         private bool _OnOneWayPlatform;
         public static Action OnPlayerDeath;
 
+        [Export]
+        public AnimatedSprite2D sprite;
+
+        public bool isPlayerDead;
+
+        [Export]
+        private PlayParticle DeathParticle;
+
         public bool Moving { get; private set; }
 
         private bool IsNearZero(float value)
@@ -137,7 +145,7 @@ namespace Platformer.LePlayer2D
                 _healthComponent.TakeDamage();
                 return;
             }
-            if(area.CollisionLayer == 2048)//Hit kill area
+            if(area.CollisionLayer == 2048 && !isPlayerDead)//Hit kill area
             {
                 GD.Print("I hit a kill barrier");
                 _healthComponent.TakeDamage();
@@ -146,18 +154,18 @@ namespace Platformer.LePlayer2D
         }
         public void OnPlayerFeetBodyEntered(Node2D body)
         {
-            GD.Print("On one way");
             _OnOneWayPlatform = true;
         }
         public void OnPlayerFeetBodyExited(Node2D body)
         {
-            GD.Print("Exited On one way");
             _OnOneWayPlatform = false;
         }
         #endregion
 
         public void PlayerDeath()
         {
+            //DeathParticle.PlayParticlesPosNode(this);FCUK
+            isPlayerDead = true;
             OnPlayerDeath?.Invoke();
             //ProcessMode = ProcessModeEnum.Disabled; fix this
             //Visible = false;

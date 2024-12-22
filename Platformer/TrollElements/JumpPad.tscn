@@ -1,0 +1,62 @@
+[gd_scene load_steps=9 format=3 uid="uid://8oc027ri5msi"]
+
+[ext_resource type="Texture2D" uid="uid://bfgj4fbai2b8t" path="res://Art/2D/jumppad1.png" id="1_5sr4s"]
+[ext_resource type="Script" path="res://Platformer/TrollElements/JumpPad.cs" id="1_5usdq"]
+[ext_resource type="Texture2D" uid="uid://l53kbu37jn0r" path="res://Art/2D/jumppad2.png" id="2_b2kx4"]
+[ext_resource type="Texture2D" uid="uid://ffd8kq0w5qkg" path="res://Art/2D/jumppad3.png" id="3_86fkk"]
+[ext_resource type="Texture2D" uid="uid://dn3mktc168bos" path="res://Art/2D/jumppad4.png" id="4_xtp5q"]
+[ext_resource type="PackedScene" uid="uid://fberc1pijtul" path="res://Commons/2D/BaseTrigger2d.tscn" id="5_jhxbo"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6stc8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5sr4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_b2kx4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_86fkk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_b2kx4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xtp5q")
+}],
+"loop": false,
+"name": &"Pressed",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5sr4s")
+}],
+"loop": true,
+"name": &"Static",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jr3d4"]
+size = Vector2(14, 9)
+
+[node name="JumpPad" type="Node2D" node_paths=PackedStringArray("_sprite2D")]
+scale = Vector2(3, 3)
+script = ExtResource("1_5usdq")
+_sprite2D = NodePath("AnimatedSprite2D")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_6stc8")
+animation = &"Pressed"
+autoplay = "Static"
+
+[node name="BaseTrigger2D" parent="." instance=ExtResource("5_jhxbo")]
+collision_mask = 1536
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseTrigger2D"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_jr3d4")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="OnAnimatedSprite2dAnimationFinished"]
+[connection signal="area_entered" from="BaseTrigger2D" to="." method="OnBaseTrigger2dAreaEntered"]

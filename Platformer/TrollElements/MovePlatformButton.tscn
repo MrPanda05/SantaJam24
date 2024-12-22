@@ -1,6 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://dj57nw146jbrk"]
+[gd_scene load_steps=5 format=3 uid="uid://dj57nw146jbrk"]
 
 [ext_resource type="Script" path="res://Platformer/TrollElements/MovePlatformButton.cs" id="1_7tpom"]
+[ext_resource type="PackedScene" uid="uid://bd6m1fwn8pc8v" path="res://Platformer/CastleRedBrick.tscn" id="2_48q8y"]
+[ext_resource type="PackedScene" uid="uid://bebwtttopv8uc" path="res://Platformer/Killables/Spikes.tscn" id="3_dn6k8"]
 
-[node name="MovePlatformButton" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ubrg6"]
+size = Vector2(126, 15)
+
+[node name="MovePlatformButton" type="Node2D" node_paths=PackedStringArray("_body", "_timer")]
 script = ExtResource("1_7tpom")
+_force = Vector2(-100, 0)
+_body = NodePath("AnimatableBody2D")
+_timer = NodePath("Timer")
+
+[node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
+rotation = -1.5708
+collision_layer = 2
+
+[node name="PlatformSprite" parent="AnimatableBody2D" instance=ExtResource("2_48q8y")]
+
+[node name="Spikes" parent="AnimatableBody2D" instance=ExtResource("3_dn6k8")]
+position = Vector2(-42, -26)
+
+[node name="Spikes2" parent="AnimatableBody2D" instance=ExtResource("3_dn6k8")]
+position = Vector2(-4, -26)
+
+[node name="Spikes3" parent="AnimatableBody2D" instance=ExtResource("3_dn6k8")]
+position = Vector2(36, -26)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatableBody2D"]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_ubrg6")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

@@ -1,40 +1,174 @@
-[gd_scene load_steps=8 format=3 uid="uid://buybceqaip3iu"]
+[gd_scene load_steps=15 format=3 uid="uid://buybceqaip3iu"]
 
 [ext_resource type="Script" path="res://Platformer/Enemies/TestEnemy.cs" id="1_bi0ve"]
 [ext_resource type="PackedScene" uid="uid://c3emid13pi23w" path="res://Commons/Components/HealthComponent.tscn" id="1_m8o82"]
-[ext_resource type="Texture2D" uid="uid://dkwgnxk5lmmsf" path="res://icon.svg" id="1_osiqk"]
 [ext_resource type="PackedScene" uid="uid://d1oddmg01dem1" path="res://Platformer/Enemies/AI/EnemyAilr.tscn" id="2_1fmp1"]
+[ext_resource type="Texture2D" uid="uid://cffmesvm73yp0" path="res://Art/2D/masrshmellow1.png" id="4_6nrom"]
+[ext_resource type="Texture2D" uid="uid://dssr8sj3fysi3" path="res://Art/2D/deathmarshmellow.png" id="4_ybdx0"]
+[ext_resource type="Texture2D" uid="uid://br0edomqdjbwk" path="res://Art/2D/masrshmellow2.png" id="5_ub4yu"]
+[ext_resource type="Texture2D" uid="uid://kv3dj3ijq12y" path="res://Art/2D/masrshmellow3.png" id="6_gb11i"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dyfx5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ybdx0")
+}],
+"loop": true,
+"name": &"Dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_6nrom")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ub4yu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_gb11i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ub4yu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6nrom")
+}],
+"loop": true,
+"name": &"Walking",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_c6vwd"]
+resource_name = "DeathAnim"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 0.166667, 0.766667),
+"transitions": PackedFloat32Array(1, 2.07053, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -25), Vector2(0, 500)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 0.766667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333),
+"transitions": PackedFloat32Array(1, 0.353553),
+"update": 0,
+"values": [0.0, 3.14159]
+}
+
+[sub_resource type="Animation" id="Animation_5443p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2djb2"]
+_data = {
+"DeathAnim": SubResource("Animation_c6vwd"),
+"RESET": SubResource("Animation_5443p")
+}
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c4iu6"]
-size = Vector2(74, 26)
+size = Vector2(34, 26)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hk55b"]
-size = Vector2(74, 11)
+size = Vector2(34, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ltk1q"]
-size = Vector2(74, 37)
+size = Vector2(33, 37)
 
-[node name="TestEnemy" type="CharacterBody2D" node_paths=PackedStringArray("HealthComp")]
+[node name="TestEnemy" type="CharacterBody2D" node_paths=PackedStringArray("HealthComp", "_sprite", "_timer", "_playerAnim", "_SolidBox", "_StopArea", "_HitBox")]
 collision_layer = 4
-collision_mask = 4123
+collision_mask = 36891
 script = ExtResource("1_bi0ve")
 HealthComp = NodePath("HealthComponent")
 path = NodePath("EnemyAILR")
+_sprite = NodePath("AnimatedSprite2D")
+_timer = NodePath("Timer")
+_playerAnim = NodePath("AnimationPlayer")
+_SolidBox = NodePath("CollisionShape2D")
+_StopArea = NodePath("StompArea/CollisionShape2D")
+_HitBox = NodePath("EnemyHitbox/CollisionShape2D")
 metadata/_edit_group_ = true
+
+[node name="Timer" type="Timer" parent="."]
+process_mode = 3
+wait_time = 1.1
+one_shot = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(2.75, 2.75)
+sprite_frames = SubResource("SpriteFrames_dyfx5")
+animation = &"Dead"
+autoplay = "Walking"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2djb2")
+}
 
 [node name="EnemyAILR" parent="." instance=ExtResource("2_1fmp1")]
 _speed = -50.0
 
 [node name="HealthComponent" parent="." instance=ExtResource("1_m8o82")]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(0.580203, 3.17663e-06, 0.371868, 1)
-position = Vector2(1, 1)
-scale = Vector2(0.580078, 0.289063)
-texture = ExtResource("1_osiqk")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 6)
+position = Vector2(0, 6)
 shape = SubResource("RectangleShape2D_c4iu6")
 
 [node name="StompArea" type="Area2D" parent="."]
@@ -42,7 +176,7 @@ collision_layer = 64
 collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StompArea"]
-position = Vector2(1, -12.5)
+position = Vector2(0, -12.5)
 rotation = -3.14159
 shape = SubResource("RectangleShape2D_hk55b")
 
@@ -51,12 +185,13 @@ collision_layer = 1024
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
-position = Vector2(1, 0.5)
+position = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_ltk1q")
 debug_color = Color(0.922648, 0.132988, 0.601885, 0.42)
 
 [node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="."]
-position = Vector2(1, 0.5)
-scale = Vector2(3.7, 1.85)
+position = Vector2(0.500001, 0.5)
+scale = Vector2(1.75, 1.85)
 
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]
 [connection signal="area_entered" from="StompArea" to="." method="OnStompAreaAreaEntered"]

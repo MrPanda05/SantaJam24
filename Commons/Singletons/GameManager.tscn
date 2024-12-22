@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2d2h7dgpp3n0"]
+[gd_scene load_steps=3 format=3 uid="uid://d2d2h7dgpp3n0"]
 
 [ext_resource type="Script" path="res://Commons/Singletons/GameManager.cs" id="1_0l5jk"]
+[ext_resource type="Script" path="res://Commons/Singletons/Inventory.cs" id="2_1ptb0"]
 
 [node name="GameManager" type="Node"]
 script = ExtResource("1_0l5jk")
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource("2_1ptb0")

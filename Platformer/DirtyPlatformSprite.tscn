@@ -7,3 +7,4 @@ load_path = "res://.godot/imported/tilesetoriginals.png-853d67bc8a7ac8c1b9a0075b
 
 [node name="DirtyPlatformSprite" instance=ExtResource("1_bix3v")]
 texture = SubResource("CompressedTexture2D_22c4u")
+region_rect = Rect2(208, 16, 32, 16)
