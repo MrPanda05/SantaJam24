@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=4 uid="uid://b1j1plm46seq7"]
+[gd_scene load_steps=47 format=4 uid="uid://b1j1plm46seq7"]
 
 [ext_resource type="Script" path="res://Platformer/Levels/FirstLevel.cs" id="1_33smj"]
 [ext_resource type="Texture2D" uid="uid://mtte5m64jked" path="res://Art/2D/tilesetoriginals.png" id="1_35k7o"]
@@ -29,6 +29,9 @@
 [ext_resource type="PackedScene" uid="uid://dp3u0ihwthj4r" path="res://Platformer/Colectables/Coin.tscn" id="24_4y1cb"]
 [ext_resource type="PackedScene" uid="uid://dcw7yj88lknvi" path="res://Platformer/Trophy.tscn" id="25_liw3f"]
 [ext_resource type="PackedScene" uid="uid://ubsoyinnylel" path="res://Platformer/Moon.tscn" id="26_4k74f"]
+[ext_resource type="PackedScene" uid="uid://byymsy7jqsy7v" path="res://Platformer/Explosionparti.tscn" id="30_2fk32"]
+[ext_resource type="PackedScene" uid="uid://bex757ajag6xe" path="res://Platformer/PlayParticle.tscn" id="30_6o0ji"]
+[ext_resource type="PackedScene" uid="uid://cranq87n6mpt8" path="res://Platformer/Explosion.tscn" id="31_pcj2i"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e1877"]
 texture = ExtResource("1_35k7o")
@@ -260,9 +263,12 @@ script = ExtResource("1_33smj")
 
 [node name="GameUI" parent="." instance=ExtResource("2_uvopl")]
 
-[node name="Player2D" parent="." instance=ExtResource("2_qjf8k")]
+[node name="Player2D" parent="." node_paths=PackedStringArray("DeathParticle", "particles", "particles2") instance=ExtResource("2_qjf8k")]
 z_index = 1
 position = Vector2(27, 329)
+DeathParticle = NodePath("../PlayParticle")
+particles = NodePath("../Explosionparti")
+particles2 = NodePath("../GPUParticles2D")
 
 [node name="PlayerCamera" parent="Player2D" index="0"]
 limit_left = -3160
@@ -1072,6 +1078,12 @@ position = Vector2(179, -5726)
 
 [node name="Moon" parent="." instance=ExtResource("26_4k74f")]
 position = Vector2(685, -5802)
+
+[node name="PlayParticle" parent="." instance=ExtResource("30_6o0ji")]
+
+[node name="Explosionparti" parent="." instance=ExtResource("30_2fk32")]
+
+[node name="GPUParticles2D" parent="." instance=ExtResource("31_pcj2i")]
 
 [editable path="Player2D"]
 [editable path="Killables/SpikesMovables/MovePlatformButton"]

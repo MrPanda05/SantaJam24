@@ -13,7 +13,6 @@ curve = SubResource("Curve_64k0f")
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_eka1s"]
 lifetime_randomness = 0.4
 particle_flag_disable_z = true
-inherit_velocity_ratio = 500.0
 velocity_pivot = Vector3(200, 200, 200)
 direction = Vector3(200, 200, 200)
 spread = 180.0
@@ -21,7 +20,7 @@ initial_velocity_min = 100.0
 initial_velocity_max = 300.0
 gravity = Vector3(0, 300, 0)
 scale_min = 0.1
-scale_max = 0.85
+scale_max = 1.2
 color = Color(0.771776, 1, 0.987199, 1)
 hue_variation_min = -1.0
 hue_variation_max = -0.57

@@ -37,9 +37,15 @@ namespace Platformer.LePlayer2D
         public AnimatedSprite2D sprite;
 
         public bool isPlayerDead;
+        //FIX THIS
 
         [Export]
         private PlayParticle DeathParticle;
+        [Export]
+        private Explosionparti particles;
+
+        [Export]
+        private GpuParticles2D particles2;
 
         public bool Moving { get; private set; }
 
@@ -164,7 +170,8 @@ namespace Platformer.LePlayer2D
 
         public void PlayerDeath()
         {
-            //DeathParticle.PlayParticlesPosNode(this);FCUK
+            //DeathParticle.PlayLeParticle(Position, particles);
+            DeathParticle.PlatParticleAt(Position, particles2);
             isPlayerDead = true;
             OnPlayerDeath?.Invoke();
             //ProcessMode = ProcessModeEnum.Disabled; fix this
@@ -177,6 +184,7 @@ namespace Platformer.LePlayer2D
             _velocityComponent = GetNode<VelocityComponent2d>("VelocityComponent2D");
             _healthComponent.OnDeath += PlayerDeath;
             GameManager.Instance.SetPlayer(this);
+            particles.Restart();
         }
 
         public override void _PhysicsProcess(double delta)

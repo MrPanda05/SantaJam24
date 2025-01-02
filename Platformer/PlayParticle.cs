@@ -6,14 +6,25 @@ namespace Platformer
     public partial class PlayParticle : Node2D
     {
         [Export]
-        public PackedScene particles;
-
-        [Export]
         public Node2D posNode;
 
         [Export]
         public Vector2 posVec;
 
+        public void PlatParticleAt(Vector2 pos, GpuParticles2D particle)
+        {
+            //GD.Print("Pos: " + pos);
+            //GD.Print("Particle pos: " + particle.GlobalPosition);
+            //particle.GlobalPosition = pos;
+            GD.Print(particle.Position);
+            particle.Position = pos;
+            particle.Restart();
+        }
+        public void PlayLeParticle(Vector2 pos, Explosionparti particle)
+        {
+            particle.Position = pos;
+            particle.Restart();
+        }
         //public void PlayParticlesPosNode()
         //{
         //    var newParticles = particles.Instantiate() as GpuParticles2D;
