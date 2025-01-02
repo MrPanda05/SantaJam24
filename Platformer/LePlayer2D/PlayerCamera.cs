@@ -7,6 +7,7 @@ namespace Platformer.LePlayer2D
 	{
 		[Export]
 		private Player2d _player;
+
         public override void _Ready()
         {
             //Position = _player.Position;

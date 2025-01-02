@@ -18,6 +18,9 @@ namespace Platformer.TrollsElements
         [Export]
         private Vector2 force;
 
+        [Export]
+        private AudioStreamPlayer _soundFX;
+
         public void OnAnimatedSprite2dAnimationFinished()
         {
             if(_sprite2D.Animation == "Pressed")
@@ -51,6 +54,7 @@ namespace Platformer.TrollsElements
                     body.Velocity = force;
                 }
                 body.MoveAndSlide();
+                _soundFX.Play();
             }
         }
         public void Action()

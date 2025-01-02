@@ -19,6 +19,9 @@ namespace Platformer.Triggers
 
         public Action OnButtonPressed;
 
+        [Export]
+        private AudioStreamPlayer _soundFX;
+
         public void Action()
         {
             OnButtonPressed?.Invoke();
@@ -31,6 +34,7 @@ namespace Platformer.Triggers
                 HasBeenUsed = true;
                 Action();
                 _sprite.Texture = _pressedButtonSprite;
+                _soundFX.Play();
             }
         }
         public void OnBaseTrigger2dAreaExited(Area2D area)
@@ -39,6 +43,7 @@ namespace Platformer.Triggers
             if (Repeatable)
             {
                 _sprite.Texture = _unpressedButtonSprite;
+                _soundFX.Play();
             }
         }
     }

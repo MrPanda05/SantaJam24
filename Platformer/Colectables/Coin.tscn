@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dp3u0ihwthj4r"]
+[gd_scene load_steps=10 format=3 uid="uid://dp3u0ihwthj4r"]
 
 [ext_resource type="Script" path="res://Platformer/Colectables/Coin.cs" id="1_brf63"]
 [ext_resource type="PackedScene" uid="uid://cotrs37lvx6mf" path="res://Commons/Colectables/ColectableArea.tscn" id="3_btiix"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cxrw1fu6q1ef7" path="res://Art/2D/coin2.png" id="4_wvei5"]
 [ext_resource type="Texture2D" uid="uid://bb8d1sucrsm3a" path="res://Art/2D/coin3.png" id="5_hrl4q"]
 [ext_resource type="Texture2D" uid="uid://d1pq0fgt360of" path="res://Art/2D/coin4.png" id="6_b1rod"]
+[ext_resource type="AudioStream" uid="uid://bk84vmyeta65a" path="res://Platformer/Sounds/CoinsSounds.tres" id="7_v4n05"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4fi6"]
 size = Vector2(40, 40)
@@ -36,9 +37,10 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="Coin" type="Node2D"]
+[node name="Coin" type="Node2D" node_paths=PackedStringArray("SoundFX")]
 scale = Vector2(0.6, 0.6)
 script = ExtResource("1_brf63")
+SoundFX = NodePath("AudioStreamPlayer")
 
 [node name="ColectableArea" parent="." instance=ExtResource("3_btiix")]
 
@@ -52,3 +54,10 @@ sprite_frames = SubResource("SpriteFrames_f2003")
 animation = &"Iddle"
 autoplay = "Iddle"
 frame_progress = 0.818135
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_v4n05")
+max_polyphony = 3
+bus = &"SFX"
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="OnAudioStreamPlayerFinished"]

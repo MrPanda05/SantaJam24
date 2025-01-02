@@ -1,0 +1,12 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://bk84vmyeta65a"]
+
+[ext_resource type="AudioStream" uid="uid://cwlxdddhbwwso" path="res://Platformer/Sounds/pickupCoin.wav" id="1_5bygs"]
+[ext_resource type="AudioStream" uid="uid://dj426ynrl3b7w" path="res://Platformer/Sounds/pickupCoin3.wav" id="2_5ihns"]
+[ext_resource type="AudioStream" uid="uid://br1ficlf2ywlr" path="res://Platformer/Sounds/pickupCoin2.wav" id="3_1yt4e"]
+
+[resource]
+playback_mode = 1
+streams_count = 3
+stream_0/stream = ExtResource("1_5bygs")
+stream_1/stream = ExtResource("2_5ihns")
+stream_2/stream = ExtResource("3_1yt4e")

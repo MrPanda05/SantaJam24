@@ -1,0 +1,11 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://c3pnm6hqjewkc"]
+
+[ext_resource type="AudioStream" uid="uid://cp70djiuyctik" path="res://Platformer/Sounds/jump1.wav" id="1_ntqoh"]
+[ext_resource type="AudioStream" uid="uid://b7p0bl8egy6f2" path="res://Platformer/Sounds/jump2.wav" id="2_h4gvk"]
+[ext_resource type="AudioStream" uid="uid://csv7bf574w5c1" path="res://Platformer/Sounds/jump3.wav" id="3_8uvf1"]
+
+[resource]
+streams_count = 3
+stream_0/stream = ExtResource("1_ntqoh")
+stream_1/stream = ExtResource("2_h4gvk")
+stream_2/stream = ExtResource("3_8uvf1")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b0jdkgdnht7ot"]
+[gd_scene load_steps=30 format=3 uid="uid://b0jdkgdnht7ot"]
 
 [ext_resource type="Script" path="res://Platformer/LePlayer2D/Player2d.cs" id="1_435bp"]
 [ext_resource type="PackedScene" uid="uid://dgrfjqd0ynciv" path="res://Commons/Colectables/Colector.tscn" id="2_tktaa"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://k5xc6hk7q0wi" path="res://Platformer/LePlayer2D/Sprites/playerjump5.png" id="15_tc2ur"]
 [ext_resource type="Texture2D" uid="uid://b6xvtnoxox4wr" path="res://Platformer/LePlayer2D/Sprites/playerjump6.png" id="16_akp6w"]
 [ext_resource type="Texture2D" uid="uid://falq0bdwravb" path="res://Platformer/LePlayer2D/Sprites/playerjump7.png" id="17_ki3jh"]
+[ext_resource type="AudioStream" uid="uid://c3pnm6hqjewkc" path="res://Platformer/Sounds/JumpSoundsFX.tres" id="24_d1p3l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vdu20"]
 size = Vector2(40, 62.8571)
@@ -105,7 +106,7 @@ animations = [{
 "speed": 12.0
 }]
 
-[node name="Player2D" type="CharacterBody2D" node_paths=PackedStringArray("_healthComponent", "JumpHeightTimer", "CoyoteJumpTimer", "BufferTimer", "sprite")]
+[node name="Player2D" type="CharacterBody2D" node_paths=PackedStringArray("_healthComponent", "JumpHeightTimer", "CoyoteJumpTimer", "BufferTimer", "sprite", "jumpSoundFX")]
 position = Vector2(0, -6)
 scale = Vector2(0.7, 0.7)
 collision_mask = 4106
@@ -115,6 +116,7 @@ JumpHeightTimer = NodePath("JumpHeight")
 CoyoteJumpTimer = NodePath("CoyoteTimer")
 BufferTimer = NodePath("BufferJumpTimer")
 sprite = NodePath("PlayerSprites")
+jumpSoundFX = NodePath("AudioStreamPlayer")
 metadata/_edit_group_ = true
 
 [node name="PlayerCamera" parent="." instance=ExtResource("2_v5eeh")]
@@ -200,6 +202,11 @@ scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_x13vf")
 animation = &"Iddle"
 script = ExtResource("11_jx2tv")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_d1p3l")
+max_polyphony = 2
+bus = &"SFX"
 
 [connection signal="timeout" from="JumpHeight" to="." method="OnJumpHeightTimeout"]
 [connection signal="area_entered" from="PlayerFeet" to="." method="OnPlayerFeetAreaEntered"]

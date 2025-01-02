@@ -37,17 +37,10 @@ namespace Platformer.LePlayer2D
         public AnimatedSprite2D sprite;
 
         public bool isPlayerDead;
-        //FIX THIS
-
-        [Export]
-        private PlayParticle DeathParticle;
-        [Export]
-        private Explosionparti particles;
-
-        [Export]
-        private GpuParticles2D particles2;
-
         public bool Moving { get; private set; }
+
+        [Export]
+        private AudioStreamPlayer jumpSoundFX;
 
         private bool IsNearZero(float value)
         {
@@ -81,7 +74,7 @@ namespace Platformer.LePlayer2D
         }
         private void Jump()
         {
-
+            jumpSoundFX.Play();
             _vel.Y = -_velocityComponent.ForceJump;// * (1 + Mathf.Abs(Mathf.Clamp(_vel.X, 0, _vel.X/550))); this is supposed to give a jump heigh bost while runing, does not work
             if (_CoyoteTime) _CoyoteTime = false;
         }
@@ -170,21 +163,18 @@ namespace Platformer.LePlayer2D
 
         public void PlayerDeath()
         {
-            //DeathParticle.PlayLeParticle(Position, particles);
-            DeathParticle.PlatParticleAt(Position, particles2);
             isPlayerDead = true;
             OnPlayerDeath?.Invoke();
-            //ProcessMode = ProcessModeEnum.Disabled; fix this
-            //Visible = false;
-            //GD.Print("FUCK I DIED FUCK");
+            ParticleEmitter2d.EmitParticles(GetParent() as Node2D, Position, Constants.ExplosionParticles);
+            SoundManager.Instance.PlayExplosion();
         }
-        
+
         public override void _Ready()
         {
             _velocityComponent = GetNode<VelocityComponent2d>("VelocityComponent2D");
             _healthComponent.OnDeath += PlayerDeath;
             GameManager.Instance.SetPlayer(this);
-            particles.Restart();
+            //particles.Restart();
         }
 
         public override void _PhysicsProcess(double delta)

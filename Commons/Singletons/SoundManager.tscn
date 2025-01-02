@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dxysnmib6lukx"]
+
+[ext_resource type="Script" path="res://Commons/Singletons/SoundManager.cs" id="1_oqu18"]
+[ext_resource type="AudioStream" uid="uid://dfwt7rdkvl4oh" path="res://Platformer/Sounds/ExplosionSound.mp3" id="2_larcj"]
+
+[node name="SoundManager" type="Node" node_paths=PackedStringArray("AudioStreamPlayers")]
+script = ExtResource("1_oqu18")
+AudioStreamPlayers = [NodePath("Explosion")]
+
+[node name="Explosion" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_larcj")
+bus = &"SFX"

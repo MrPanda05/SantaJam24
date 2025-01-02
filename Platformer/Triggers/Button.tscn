@@ -1,17 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://b7ir6v8pn5vdc"]
+[gd_scene load_steps=7 format=3 uid="uid://b7ir6v8pn5vdc"]
 
 [ext_resource type="Script" path="res://Platformer/Triggers/ButtonTri.cs" id="1_gclip"]
 [ext_resource type="PackedScene" uid="uid://fberc1pijtul" path="res://Commons/2D/BaseTrigger2d.tscn" id="2_em81w"]
 [ext_resource type="Texture2D" uid="uid://bb17fjuad3rii" path="res://Art/2D/button.png" id="2_hb1uq"]
 [ext_resource type="Texture2D" uid="uid://l246d3y7h2if" path="res://Art/2D/buttonPressed.png" id="2_kvh08"]
+[ext_resource type="AudioStream" uid="uid://dlx32l2al1454" path="res://Platformer/Sounds/Button.mp3" id="5_c2vo4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8de0p"]
 
-[node name="Button" type="Node2D" node_paths=PackedStringArray("_sprite")]
+[node name="Button" type="Node2D" node_paths=PackedStringArray("_sprite", "_soundFX")]
 script = ExtResource("1_gclip")
 _sprite = NodePath("Sprite2D")
 _pressedButtonSprite = ExtResource("2_kvh08")
 _unpressedButtonSprite = ExtResource("2_hb1uq")
+_soundFX = NodePath("AudioStreamPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -7)
@@ -23,6 +25,11 @@ collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BaseTrigger2D"]
 shape = SubResource("RectangleShape2D_8de0p")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_c2vo4")
+max_polyphony = 2
+bus = &"SFX"
 
 [connection signal="area_entered" from="BaseTrigger2D" to="." method="OnBaseTrigger2dAreaEntered"]
 [connection signal="area_exited" from="BaseTrigger2D" to="." method="OnBaseTrigger2dAreaExited"]

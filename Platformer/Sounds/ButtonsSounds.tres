@@ -1,0 +1,10 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://cn7lwqfm4dy03"]
+
+[ext_resource type="AudioStream" uid="uid://dlx32l2al1454" path="res://Platformer/Sounds/Button.mp3" id="1_i3pdm"]
+[ext_resource type="AudioStream" uid="uid://drs2lu84k2cxg" path="res://Platformer/Sounds/Button2.mp3" id="2_ekdp0"]
+
+[resource]
+playback_mode = 2
+streams_count = 2
+stream_0/stream = ExtResource("1_i3pdm")
+stream_1/stream = ExtResource("2_ekdp0")

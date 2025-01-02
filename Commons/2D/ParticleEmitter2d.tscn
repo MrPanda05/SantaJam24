@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dx4w6oir54j2r"]
+
+[ext_resource type="Script" path="res://Commons/2D/ParticleEmitter2d.cs" id="1_p73wy"]
+
+[node name="ParticleEmitter2D" type="Node2D"]
+editor_description = "This is a node to emit particles at run time, not recomended for particles to repeat"
+script = ExtResource("1_p73wy")

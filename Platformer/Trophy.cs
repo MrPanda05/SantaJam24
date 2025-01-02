@@ -8,6 +8,8 @@ namespace Platformer
     {
         public static Action OnTrophyColected;
 
+        public AudioStreamPlayer SoundFX { get; set; }
+
         private void ChangeScene()
         {
             GetTree().ChangeSceneToFile("res://Platformer/Levels/Level2.tscn");
