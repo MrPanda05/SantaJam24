@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://coypo0jaqinhr"]
+
+[ext_resource type="PackedScene" uid="uid://b1xye8ni5ccur" path="res://FPS/Models/Table1.fbx" id="1_jp5h5"]
+
+[node name="Table1" instance=ExtResource("1_jp5h5")]

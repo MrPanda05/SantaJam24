@@ -1,3 +1,4 @@
+using Commons.Singletons;
 using Godot;
 using System;
 
@@ -6,6 +7,9 @@ namespace Platformer.Levels
     public partial class FirstLevel : Node2D
     {
         public bool IsInSubViewPort { get; private set; }
+
+
+        
         public override void _Ready()
         {
             var paren = GetParent();
@@ -24,8 +28,11 @@ namespace Platformer.Levels
         }
         public void ChangeScene()
         {
+            GameManager.Instance.SetPlayer2DToNull();
             var parent = GetParent();
-            var newScene = ResourceLoader.Load<PackedScene>("res://Platformer/Levels/Level2.tscn").Instantiate();
+            //var newScene = ResourceLoader.Load<PackedScene>("res://Platformer/Levels/Level2.tscn").Instantiate();
+            var newScene = ResourceLoader.Load<PackedScene>("res://Platformer/Levels/EndScreen.tscn").Instantiate();
+
             if (IsInSubViewPort)
             {
                 parent.AddChild(newScene);

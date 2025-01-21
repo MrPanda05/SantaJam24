@@ -1,0 +1,41 @@
+[gd_scene load_steps=6 format=3 uid="uid://wx6qktcbhho4"]
+
+[ext_resource type="PackedScene" uid="uid://dymdrhm74uf30" path="res://FPS/Dialogue/DialogueUI.tscn" id="1_pn6at"]
+[ext_resource type="PackedScene" uid="uid://ce7ilg44pegic" path="res://FPS/Fadeblack.tscn" id="2_l03l4"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_we7sl"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_csrxm"]
+sky_material = SubResource("ProceduralSkyMaterial_we7sl")
+
+[sub_resource type="Environment" id="Environment_4og5g"]
+background_mode = 2
+sky = SubResource("Sky_csrxm")
+tonemap_mode = 2
+ssao_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+
+[node name="WatchingScene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4og5g")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="UI" type="Node3D" parent="."]
+
+[node name="DialogueUI" parent="UI" instance=ExtResource("1_pn6at")]
+
+[node name="Fadeblack" parent="UI" instance=ExtResource("2_l03l4")]
+
+[node name="AnimationPlayer" parent="UI/Fadeblack" index="1"]
+autoplay = "Fadeout"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+
+[editable path="UI/Fadeblack"]

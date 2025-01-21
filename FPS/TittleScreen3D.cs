@@ -1,8 +1,10 @@
+using Commons.Singletons;
 using Godot;
 using System;
 
 namespace FPS
 {
+    //The class name should've been soemthing like, FPSlevel one or somethin
     public partial class TittleScreen3D : Node3D
     {
         [Export]
@@ -12,22 +14,31 @@ namespace FPS
 
         private MeshInstance3D meshInstance;
 
+        [Export]
+        private Node2D Platformer;
+
+        [Export]
+        private FPSUImenu _menu;
 
         public override void _Ready()
         {
-            //port.RenderTargetClearMode = SubViewport.ClearMode.Once;
             tvTexture.Texture = port.GetTexture();
             port.CanvasItemDefaultTextureFilter = Viewport.DefaultCanvasItemTextureFilter.Nearest;
-            //meshInstance.MaterialOverride.AlbedoTexture = port.GetTexture();
-
-            //Material mat = meshInstance.MaterialOverride;
+            _menu.OnAnimationPlatformerEnd += InitializePlatformer;
         }
-        public override void _PhysicsProcess(double delta)
+
+        private void InitializePlatformer()
         {
+            GameManager.SetNodeProcessMode(Platformer, ProcessModeEnum.Inherit);
         }
         public override void _UnhandledInput(InputEvent @event)
         {
             port.PushInput(@event);
+        }
+        public override void _ExitTree()
+        {
+            _menu.OnAnimationPlatformerEnd -= InitializePlatformer;
+
         }
     }
 }

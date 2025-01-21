@@ -61,5 +61,9 @@ namespace Platformer.Enemies
         {
 			EnemyAI?.Logic(this);
         }
+        public override void _ExitTree()
+        {
+            HealthComp.OnDeath -= Death;
+        }
     }
 }

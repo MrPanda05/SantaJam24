@@ -1,15 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcdksvifm5hmd"]
+[gd_scene load_steps=4 format=3 uid="uid://bcdksvifm5hmd"]
 
 [ext_resource type="Script" path="res://Platformer/SpawnPoint.cs" id="1_k3m6i"]
 [ext_resource type="Texture2D" uid="uid://bogp1jqdvwhxw" path="res://Art/2D/flag.png" id="2_gdd46"]
+[ext_resource type="AudioStream" uid="uid://chr4wie3xoow8" path="res://Platformer/Sounds/power-up-sparkle-1-177983.mp3" id="3_niggq"]
 
-[node name="SpawnPoint" type="Area2D"]
+[node name="SpawnPoint" type="Area2D" node_paths=PackedStringArray("_soundFX")]
 collision_layer = 16384
 collision_mask = 512
 script = ExtResource("1_k3m6i")
+_soundFX = NodePath("AudioStreamPlayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(3, 3)
 texture = ExtResource("2_gdd46")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_niggq")
 
 [connection signal="area_entered" from="." to="." method="OnAreaEntered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=4 uid="uid://b1j1plm46seq7"]
+[gd_scene load_steps=46 format=4 uid="uid://b1j1plm46seq7"]
 
 [ext_resource type="Script" path="res://Platformer/Levels/FirstLevel.cs" id="1_33smj"]
 [ext_resource type="Texture2D" uid="uid://mtte5m64jked" path="res://Art/2D/tilesetoriginals.png" id="1_35k7o"]
@@ -256,6 +256,9 @@ size = Vector2(193, 19)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_37fg4"]
 size = Vector2(40.5, 74)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_markg"]
+size = Vector2(189, 126)
+
 [node name="Level1" type="Node2D"]
 script = ExtResource("1_33smj")
 
@@ -263,7 +266,7 @@ script = ExtResource("1_33smj")
 
 [node name="Player2D" parent="." instance=ExtResource("2_qjf8k")]
 z_index = 1
-position = Vector2(-624, -2327)
+position = Vector2(335, -5721)
 
 [node name="PlayerCamera" parent="Player2D" index="0"]
 limit_left = -3160
@@ -756,7 +759,7 @@ position = Vector2(320, -5592)
 [node name="PlatformSprite" parent="Platfroms/OneWays/OneWaysPlatforms23" instance=ExtResource("12_dfdth")]
 
 [node name="OneWaysPlatforms25" parent="Platfroms/OneWays" instance=ExtResource("3_uxddl")]
-position = Vector2(176, -5688)
+position = Vector2(179, -5732)
 
 [node name="PlatformSprite" parent="Platfroms/OneWays/OneWaysPlatforms25" instance=ExtResource("12_dfdth")]
 
@@ -912,13 +915,15 @@ position = Vector2(2235, -2190)
 [node name="Cassettapes" type="Node2D" parent="Colectables"]
 
 [node name="Casset" parent="Colectables/Cassettapes" instance=ExtResource("15_ohte6")]
-position = Vector2(608, -1202)
+position = Vector2(50, -5539)
 
 [node name="Casset2" parent="Colectables/Cassettapes" instance=ExtResource("15_ohte6")]
-position = Vector2(2982, -251)
+position = Vector2(-18, -5535)
+tapeIndex = 1
 
 [node name="Casset3" parent="Colectables/Cassettapes" instance=ExtResource("15_ohte6")]
 position = Vector2(18, -5628)
+tapeIndex = 2
 
 [node name="Coins" type="Node2D" parent="Colectables"]
 
@@ -1068,13 +1073,23 @@ Repeatable = true
 position = Vector2(106, -4246)
 rotation = 1.57079
 
-[node name="Trophy" parent="." instance=ExtResource("25_liw3f")]
-position = Vector2(179, -5726)
+[node name="Trophy" parent="." node_paths=PackedStringArray("blockArea") instance=ExtResource("25_liw3f")]
+position = Vector2(179, -5770)
+blockArea = NodePath("../BlockDeath")
 
 [node name="Moon" parent="." instance=ExtResource("26_4k74f")]
 position = Vector2(685, -5802)
 
 [node name="ParticleEmitter2D" parent="." instance=ExtResource("34_5j6yc")]
+
+[node name="BlockDeath" type="StaticBody2D" parent="."]
+process_mode = 4
+position = Vector2(154, -5494)
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BlockDeath"]
+position = Vector2(12.5, 53)
+shape = SubResource("RectangleShape2D_markg")
 
 [editable path="Player2D"]
 [editable path="Killables/SpikesMovables/MovePlatformButton"]

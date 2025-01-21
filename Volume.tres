@@ -1,0 +1,36 @@
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://c2p1l0mbeavdl"]
+
+[ext_resource type="Texture2D" uid="uid://c2rrtr2yfcd18" path="res://Art/2D/Buttonslider.png" id="1_aag5e"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gwkjf"]
+bg_color = Color(0.22808, 0.705979, 0.373637, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1p1h3"]
+bg_color = Color(0.22808, 0.705979, 0.373637, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gb4kd"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.0757812, 0.275511, 0.13462, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[resource]
+HSlider/icons/grabber = ExtResource("1_aag5e")
+HSlider/icons/grabber_highlight = ExtResource("1_aag5e")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_gwkjf")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_1p1h3")
+HSlider/styles/slider = SubResource("StyleBoxFlat_gb4kd")

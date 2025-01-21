@@ -39,5 +39,12 @@ namespace Platformer
 				GetTree().Quit();
 			}
         }
+
+        public override void _ExitTree()
+        {
+            GameManager.Instance.inventory.OnInventoryUpdated -= UpdateUI;
+            Player2d.OnPlayerDeath -= EnableTips;
+            GameManager.Instance.OnPlayerRespawn -= DisableTips;
+        }
     }
 }

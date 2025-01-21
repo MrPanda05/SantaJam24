@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ddfuv5fc803y2"]
+
+[ext_resource type="PackedScene" uid="uid://d2tfxqw71qep7" path="res://Art/3D/Cassettap.tscn" id="1_21lcm"]
+[ext_resource type="Script" path="res://FPS/Cassettap.cs" id="1_tlja5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_52nlb"]
+size = Vector3(0.0509338, 0.198608, 0.400757)
+
+[node name="Caset3DTapes" type="Node3D"]
+script = ExtResource("1_tlja5")
+
+[node name="Model" parent="." instance=ExtResource("1_21lcm")]
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000106812, -0.00115967, 0.000183105)
+shape = SubResource("BoxShape3D_52nlb")
+
+[connection signal="input_event" from="Area3D" to="." method="OnArea3dInputEvent"]
+[connection signal="mouse_entered" from="Area3D" to="." method="OnArea3dMouseEntered"]
+[connection signal="mouse_exited" from="Area3D" to="." method="OnArea3dMouseExited"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://nl23p4768kia"]
+[gd_scene load_steps=9 format=3 uid="uid://nl23p4768kia"]
 
 [ext_resource type="Script" path="res://Platformer/Colectables/Casset.cs" id="1_dbydw"]
 [ext_resource type="Texture2D" uid="uid://cyqhf0temgteq" path="res://Art/2D/cassete.png" id="1_mk50y"]
 [ext_resource type="PackedScene" uid="uid://cotrs37lvx6mf" path="res://Commons/Colectables/ColectableArea.tscn" id="2_d5d46"]
+[ext_resource type="AudioStream" uid="uid://8rox8gohnmiy" path="res://Platformer/Sounds/tapepci.mp3" id="4_a4sie"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_s7io7"]
 size = Vector2(16, 12)
@@ -44,9 +45,10 @@ _data = {
 "RESET": SubResource("Animation_qm7xy")
 }
 
-[node name="Casset" type="Node2D"]
+[node name="Casset" type="Node2D" node_paths=PackedStringArray("SoundFX")]
 scale = Vector2(2, 2)
 script = ExtResource("1_dbydw")
+SoundFX = NodePath("AudioStreamPlayer")
 
 [node name="ColectableArea" parent="." instance=ExtResource("2_d5d46")]
 
@@ -63,3 +65,8 @@ libraries = {
 "": SubResource("AnimationLibrary_0no1j")
 }
 autoplay = "Iddle"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_a4sie")
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="OnAudioStreamPlayerFinished"]

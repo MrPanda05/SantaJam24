@@ -232,5 +232,9 @@ namespace Platformer.LePlayer2D
                 return;
             }
         }
+        public override void _ExitTree()
+        {
+            _healthComponent.OnDeath -= PlayerDeath;
+        }
     }
 }

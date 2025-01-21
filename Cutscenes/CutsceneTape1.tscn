@@ -1,0 +1,162 @@
+[gd_scene load_steps=15 format=3 uid="uid://ca1vc8ikoodvg"]
+
+[ext_resource type="Texture2D" uid="uid://b8alqsf2r4ceg" path="res://Platformer/LePlayer2D/Sprites/playerIddle1.png" id="1_78065"]
+[ext_resource type="Texture2D" uid="uid://be4gj4hq2qmv5" path="res://Platformer/LePlayer2D/Sprites/playerrunning1.png" id="1_rm373"]
+[ext_resource type="Texture2D" uid="uid://bbelwp4rbpntr" path="res://Platformer/LePlayer2D/Sprites/playerIddle2.png" id="2_cskfq"]
+[ext_resource type="Texture2D" uid="uid://ykij4ch2bca3" path="res://Platformer/LePlayer2D/Sprites/playerrunning2.png" id="2_fr63g"]
+[ext_resource type="Texture2D" uid="uid://o6aekmahnxen" path="res://Platformer/LePlayer2D/Sprites/playerIddle3.png" id="3_gyn3y"]
+[ext_resource type="Texture2D" uid="uid://caba3hhencf6b" path="res://Platformer/LePlayer2D/Sprites/playerrunning3.png" id="3_ukq73"]
+[ext_resource type="Texture2D" uid="uid://dmfcfth5ue7v7" path="res://Platformer/LePlayer2D/Sprites/playerrunning4.png" id="4_3a3xf"]
+[ext_resource type="Texture2D" uid="uid://kjcj2fx627l6" path="res://Platformer/LePlayer2D/Sprites/playerIddle4.png" id="4_up6gs"]
+[ext_resource type="Texture2D" uid="uid://bjg8sg55lq0p2" path="res://Platformer/LePlayer2D/Sprites/playerrunning5.png" id="5_002dj"]
+[ext_resource type="Texture2D" uid="uid://xyabej0mddy8" path="res://Platformer/LePlayer2D/Sprites/playerIddle5.png" id="5_df7sd"]
+
+[sub_resource type="Animation" id="Animation_yaxqt"]
+resource_name = "Cutscene"
+length = 10.0001
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-38.479, 311.948), Vector2(176, 320)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [&"Run", &"Idle"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0, 4, 0, 5]
+}
+
+[sub_resource type="Animation" id="Animation_qeha2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Idle"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-38.479, 311.948)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gbh8b"]
+_data = {
+"Cutscene": SubResource("Animation_yaxqt"),
+"RESET": SubResource("Animation_qeha2")
+}
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0ys7s"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_78065")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_cskfq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_up6gs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_df7sd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_gyn3y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("1_78065")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rm373")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_fr63g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ukq73")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3a3xf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_002dj")
+}],
+"loop": true,
+"name": &"Run",
+"speed": 5.0
+}]
+
+[node name="Cutscene1" type="Node2D"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_gbh8b")
+}
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-38.479, 311.948)
+scale = Vector2(4.865, 4.865)
+sprite_frames = SubResource("SpriteFrames_0ys7s")
+animation = &"Idle"
+frame = 4
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(424, 216)
+scale = Vector2(14.5, 14)

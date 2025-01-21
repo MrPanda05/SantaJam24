@@ -2,6 +2,7 @@ using Godot;
 using Platformer;
 using Platformer.LePlayer2D;
 using System;
+using System.Collections.Generic;
 
 namespace Commons.Singletons
 {
@@ -15,8 +16,13 @@ namespace Commons.Singletons
 
         public Inventory inventory;
         public Action OnPlayerRespawn;
+
+        public List<bool> tapesColected = [false, false, false];
+
+        public int TapeNum = -1;
         public override void _Ready()
         {
+
             if(Instance != null)
             {
                 QueueFree();
@@ -30,12 +36,22 @@ namespace Commons.Singletons
         public override void _PhysicsProcess(double delta)
         {
             //Change this later
+            if (_player2d == null) return;
             if (Input.IsActionJustPressed("Respaw") && !_player2d.Visible)
             {
                 RespawnPlayer();
                 _player2d.isPlayerDead = false;
                 OnPlayerRespawn?.Invoke();
             }
+        }
+        public void SetTapeNum(int num)
+        {
+            TapeNum = num;
+        }
+        public void SetPlayer2DToNull()
+        {
+            _player2d = null;
+            Player2d.OnPlayerDeath -= KillPlayer;
         }
         public void SetSpawnPoint(SpawnPoint spawn)
         {
@@ -74,5 +90,11 @@ namespace Commons.Singletons
             _player2d.ProcessMode = ProcessModeEnum.Inherit;
         }
 
+        public static bool SetNodeProcessMode(Node node, ProcessModeEnum mode)
+        {
+            if (node == null) return false;
+            node.SetDeferred("process_mode", (int)mode);
+            return true;
+        }
     }
 }

@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dcw7yj88lknvi"]
+[gd_scene load_steps=9 format=3 uid="uid://dcw7yj88lknvi"]
 
 [ext_resource type="PackedScene" uid="uid://cotrs37lvx6mf" path="res://Commons/Colectables/ColectableArea.tscn" id="1_4hofi"]
 [ext_resource type="Texture2D" uid="uid://dl1p7w220cxaw" path="res://Art/2D/trophy.png" id="1_ayddb"]
 [ext_resource type="Script" path="res://Platformer/Trophy.cs" id="1_xehcb"]
+[ext_resource type="AudioStream" uid="uid://c5dddryyrfhcr" path="res://Platformer/Sounds/win-176035.mp3" id="4_3nmvx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fe0k1"]
 size = Vector2(16, 14)
@@ -44,9 +45,12 @@ _data = {
 "RESET": SubResource("Animation_ws6vo")
 }
 
-[node name="Trophy" type="Node2D"]
+[node name="Trophy" type="Node2D" node_paths=PackedStringArray("SoundFX", "timer", "coli")]
 scale = Vector2(3.5, 3.5)
 script = ExtResource("1_xehcb")
+SoundFX = NodePath("AudioStreamPlayer")
+timer = NodePath("Timer")
+coli = NodePath("ColectableArea")
 metadata/_edit_group_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -63,3 +67,12 @@ libraries = {
 "": SubResource("AnimationLibrary_grihi")
 }
 autoplay = "Iddle"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_3nmvx")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.54
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]

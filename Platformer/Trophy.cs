@@ -1,4 +1,5 @@
 using Commons.Colectables;
+using Commons.Singletons;
 using Godot;
 using System;
 
@@ -8,17 +9,34 @@ namespace Platformer
     {
         public static Action OnTrophyColected;
 
+        [Export]
         public AudioStreamPlayer SoundFX { get; set; }
 
-        private void ChangeScene()
+        [Export]
+        private Timer timer;
+
+        [Export]
+        private Area2D coli;
+
+        [Export]
+        public StaticBody2D blockArea;
+        private void Disable()
         {
-            GetTree().ChangeSceneToFile("res://Platformer/Levels/Level2.tscn");
+            coli.ProcessMode = ProcessModeEnum.Disabled;
         }
         public void OnColect()
         {
-            OnTrophyColected?.Invoke();
+            timer.Start();
+            SoundFX.Play();
             GD.Print("You won!");
-            //CallDeferred("ChangeScene");
+            Visible = false;
+            //CallDeferred("Disable");
+            GameManager.SetNodeProcessMode(coli, ProcessModeEnum.Disabled);
+            GameManager.SetNodeProcessMode(blockArea, ProcessModeEnum.Inherit);
+        }
+        public void OnTimerTimeout()
+        {
+            OnTrophyColected?.Invoke();
         }
     }
 }

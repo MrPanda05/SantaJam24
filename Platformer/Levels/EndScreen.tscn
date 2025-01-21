@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://x1560jl4j1hg"]
+[gd_scene load_steps=2 format=3 uid="uid://x1560jl4j1hg"]
 
 [ext_resource type="Script" path="res://Platformer/Levels/EndScreen.cs" id="1_yt8nr"]
-[ext_resource type="Theme" uid="uid://bftdgss8cbqmu" path="res://ButtonThing.tres" id="2_04n3m"]
 
 [node name="EndScreen" type="Control"]
 layout_mode = 3
@@ -24,14 +23,13 @@ color = Color(0.295246, 0.317673, 1, 1)
 [node name="WON" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.137
+anchor_left = 0.125
 anchor_top = 0.089
-anchor_right = 0.884
-anchor_bottom = 0.4
-offset_left = 0.319992
+anchor_right = 0.872
+anchor_bottom = 0.417
 offset_top = -0.0400009
-offset_right = 0.23999
-offset_bottom = 6.0
+offset_right = -0.0800171
+offset_bottom = -0.12001
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 86
@@ -39,21 +37,45 @@ text = "YOU DID IT!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Button" type="Button" parent="."]
+[node name="Desct" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -64.0
-offset_top = -88.0
-offset_right = 64.0
-offset_bottom = -57.0
+offset_left = -256.0
+offset_top = -168.0
+offset_right = 256.0
+offset_bottom = -104.0
 grow_horizontal = 2
 grow_vertical = 0
-theme = ExtResource("2_04n3m")
-text = "Exit
-"
+theme_override_font_sizes/font_size = 36
+text = "Thanks for your cooperation!"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[connection signal="button_down" from="Button" to="." method="OnButtonButtonDown"]
+[node name="Desct2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -256.0
+offset_top = -104.0
+offset_right = 256.0
+offset_bottom = -40.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 21
+text = "Wait for the operator"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="OnTimerTimeout"]
